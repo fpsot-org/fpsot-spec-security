@@ -6,7 +6,7 @@ xref:disclosure.adoc[Pre-notice and disclosure] sets who learns of it, and when.
 
 == Reports stay out of Working Groups
 
-Each {abbr-fpsot} specification repository holds the link:https://github.com/CommunitySpecification/Community_Specification/blob/8a05e46d768ac0525af882b619c42f3380a9e869/GOVERNANCE.md[governance file of the Community Specification 1.0].
+Each {abbr-fpsot} specification repository holds the link:https://github.com/CommunitySpecification/Community_Specification/blob/8a05e46d768ac0525af882b619c42f3380a9e869/05-governance.md[governance file of the Community Specification 1.0].
 Its section 5 says that information shared in Working Group activity is not confidential.
 That covers meetings, contributions and submissions, whatever their markings.
 In a private repository, participants also need the approval of the Working Group to disclose it in public.
@@ -96,7 +96,7 @@ Breaking the embargo of another project would harm its users, and those of {abbr
 
 === Normative
 
-* link:https://github.com/CommunitySpecification/Community_Specification/blob/8a05e46d768ac0525af882b619c42f3380a9e869/GOVERNANCE.md[Community Specification 1.0, GOVERNANCE.md], Community Specification, 1.0, commit 8a05e46d768ac0525af882b619c42f3380a9e869. link:https://github.com/CommunitySpecification/Community_Specification/blob/8a05e46d768ac0525af882b619c42f3380a9e869/GOVERNANCE.md[Copy pinned to a commit]
+* link:https://github.com/CommunitySpecification/Community_Specification/blob/8a05e46d768ac0525af882b619c42f3380a9e869/05-governance.md[Community Specification 1.0, GOVERNANCE.md], Community Specification, 1.0, commit 8a05e46d768ac0525af882b619c42f3380a9e869. link:https://github.com/CommunitySpecification/Community_Specification/blob/8a05e46d768ac0525af882b619c42f3380a9e869/05-governance.md[Copy pinned to a commit]
 
 * link:https://www.first.org/cvss/v4.0/specification-document[Common Vulnerability Scoring System v4.0: Specification Document], FIRST, 4.0, document version 1.2, 2024-06-18. link:https://web.archive.org/web/20261026064457/https://www.first.org/cvss/v4.0/specification-document[Archived copy]
 * link:https://www.cve.org/ResourcesSupport/AllResources/CNARules[CVE Numbering Authority (CNA) Operational Rules], CVE Program, version 4.2.1, 2026-10-20. link:https://web.archive.org/web/20261026054457/https://www.cve.org/ResourcesSupport/AllResources/CNARules[Archived copy]

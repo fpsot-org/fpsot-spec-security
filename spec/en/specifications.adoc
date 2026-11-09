@@ -14,7 +14,7 @@ A security flaw in a specification is one of these:
 *SEC-070.* A person MUST report a security flaw in a specification through the private channels of SEC-040.
 The specification's Working Group MUST NOT receive or discuss the flaw before its public release.
 Its issues, pull requests, meetings and mailing lists are Working Group activity.
-Section 5 of the link:https://github.com/CommunitySpecification/Community_Specification/blob/8a05e46d768ac0525af882b619c42f3380a9e869/GOVERNANCE.md[governance file of the Community Specification 1.0] says that all of it is not confidential.
+Section 5 of the link:https://github.com/CommunitySpecification/Community_Specification/blob/8a05e46d768ac0525af882b619c42f3380a9e869/05-governance.md[governance file of the Community Specification 1.0] says that all of it is not confidential.
 
 [[SEC-071]]
 *SEC-071.* The security team MUST prepare the fix outside the Working Group repositories, such as in a private fork.
@@ -44,7 +44,7 @@ Implementers then get the same head start and the same public notice as users of
 
 === Normative
 
-* link:https://github.com/CommunitySpecification/Community_Specification/blob/8a05e46d768ac0525af882b619c42f3380a9e869/GOVERNANCE.md[Community Specification 1.0, GOVERNANCE.md], Community Specification, 1.0, commit 8a05e46d768ac0525af882b619c42f3380a9e869. link:https://github.com/CommunitySpecification/Community_Specification/blob/8a05e46d768ac0525af882b619c42f3380a9e869/GOVERNANCE.md[Copy pinned to a commit]
+* link:https://github.com/CommunitySpecification/Community_Specification/blob/8a05e46d768ac0525af882b619c42f3380a9e869/05-governance.md[Community Specification 1.0, GOVERNANCE.md], Community Specification, 1.0, commit 8a05e46d768ac0525af882b619c42f3380a9e869. link:https://github.com/CommunitySpecification/Community_Specification/blob/8a05e46d768ac0525af882b619c42f3380a9e869/05-governance.md[Copy pinned to a commit]
 
 == Document history
 
