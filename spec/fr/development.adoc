@@ -58,7 +58,7 @@ L’exploitant sait ainsi quelles mesures lui reviennent, et le lectorat voit po
 
 L’{abbr-asvs-first} de l’{abbr-owasp-first} fixe des exigences de sécurité pour les applications, sur trois niveaux.
 Le niveau 1 est le minimum pour toute application.
-Le niveau 2 convient à la plupart des applications qui traitent des données sensibles.
+La plupart des applications devraient viser le niveau 2, mais chaque organisation choisit son niveau selon une analyse de risque.
 Le niveau 3 convient aux applications les plus critiques.
 
 [[SEC-005]]

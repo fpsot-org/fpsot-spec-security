@@ -8,9 +8,10 @@ Le xref:disclosure.adoc[préavis et la divulgation] fixent qui l’apprend, et q
 == Les signalements restent hors des groupes de travail
 
 Chaque dépôt de spécification de {abbr-fpsot} contient le link:https://github.com/CommunitySpecification/Community_Specification/blob/8a05e46d768ac0525af882b619c42f3380a9e869/GOVERNANCE.md[fichier de gouvernance de la Community Specification 1.0].
-Sa section 5 rend non confidentielle toute information transmise dans le cadre des activités d’un groupe de travail.
+Sa section 5 dit que l’information transmise dans le cadre des activités d’un groupe de travail n’est pas confidentielle.
 Cela vise les réunions, les contributions et les soumissions, quelles que soient leurs mentions.
-Un signalement envoyé à un groupe de travail serait donc public dès son arrivée.
+Dans un dépôt privé, les participants doivent aussi obtenir l’approbation du groupe de travail pour la divulguer en public.
+Même alors, chaque participant peut lire un signalement, et aucune obligation de confidentialité ne le lie.
 Les règles ci-dessous gardent donc chaque signalement hors des activités des groupes de travail.
 
 [[SEC-040]]
@@ -31,8 +32,9 @@ Un signalement que tout le monde pouvait lire est peut-être déjà entre les ma
 *SEC-042.* {abbr-fpsot} DOIT avoir une équipe de sécurité qui traite chaque signalement hors des activités des groupes de travail.
 L’équipe DOIT compter au moins trois membres, et la fondation DOIT publier leurs rôles et la façon de les joindre.
 Chaque membre DOIT s’engager par écrit à garder confidentiels les signalements et les corrections jusqu’à leur publication.
+Toute autre personne qui voit les signalements privés, comme celle qui administre l’organisation, DOIT signer le même engagement.
 L’équipe décide de la gravité, des dates du préavis et de la publication, et de toute publication anticipée.
-Une petite équipe connue, tenue à la confidentialité, rend le traitement privé possible.
+Un petit groupe connu, tenu à la confidentialité, rend le traitement privé possible.
 
 == Délais
 
@@ -45,7 +47,7 @@ Une personne sans nouvelles peut publier plus tôt, et des réponses rapides la 
 == Gravité
 
 [[SEC-044]]
-*SEC-044.* L’équipe de sécurité DOIT coter chaque {term-vulnerability} acceptée avec le link:https://www.first.org/cvss/v4.0/specification-document[CVSS v4.0].
+*SEC-044.* L’équipe de sécurité DOIT coter chaque {term-vulnerability} acceptée d’un logiciel avec le link:https://www.first.org/cvss/v4.0/specification-document[CVSS v4.0].
 Elle DOIT consigner la chaîne vectorielle complète, qui commence par `CVSS:4.0/`, et la cote de gravité qui en découle.
 Elle DOIT publier la cote de base avec la désignation `CVSS-B`, que la norme définit.
 Elle PEUT ajouter les métriques de menace quand elle connaît une exploitation, avec la désignation `CVSS-BT`.
@@ -63,7 +65,7 @@ Avec un identifiant {abbr-cve}, chaque outil et chaque organisation suivent la m
 
 [[SEC-046]]
 *SEC-046.* L’équipe de sécurité DOIT publier un avis de sécurité pour chaque {term-vulnerability} corrigée, au moment de sa publication.
-L’avis DOIT suivre le link:https://ossf.github.io/osv-schema/[schéma OSV], et DOIT aussi figurer dans la base d’avis de la forge.
+L’avis DOIT suivre le link:https://ossf.github.io/osv-schema/[schéma OSV], et figurer dans la base d’avis de la forge, s’il y en a une.
 Il DOIT donner l’identifiant {abbr-cve}, les versions touchées et corrigées, le vecteur {abbr-cvss} et une description.
 Il DOIT aussi donner toute solution de contournement, et les dates du signalement, du préavis et de la publication.
 Il DOIT mentionner la personne qui a fait le signalement, sous le nom de son choix, sauf si elle refuse.
@@ -84,11 +86,20 @@ Elle DOIT garder ce registre au moins 5 ans après la publication.
 Un registre montre que chaque signalement a reçu le même traitement.
 Il répond aussi aux questions des organisations et des vérificateurs.
 
+== Failles dans les composants externes
+
+[[SEC-049]]
+*SEC-049.* Quand une {term-vulnerability} se trouve dans un composant externe, l’équipe de sécurité DOIT suivre l’embargo de ses responsables.
+Elle NE DOIT PAS divulguer la faille, ni une correction qui la révèle, avant la date qu’ils fixent.
+Elle PEUT envoyer un préavis aux membres de SEC-050 seulement pour ce que ces responsables permettent.
+L’équipe DEVRAIT d’abord signaler la faille à ces responsables, s’ils ne la connaissent pas.
+Briser l’embargo d’un autre projet nuirait à ses utilisateurs, et aussi à ceux de {abbr-fpsot}.
+
 == Références
 
 === Références normatives
 
-* link:https://github.com/CommunitySpecification/Community_Specification/blob/8a05e46d768ac0525af882b619c42f3380a9e869/GOVERNANCE.md[Community Specification 1.0, GOVERNANCE.md], Community Specification, 1.0, commit 8a05e46d768ac0525af882b619c42f3380a9e869. link:https://github.com/CommunitySpecification/Community_Specification/blob/8a05e46d768ac0525af882b619c42f3380a9e869/GOVERNANCE.md[Copie archivée]
+* link:https://github.com/CommunitySpecification/Community_Specification/blob/8a05e46d768ac0525af882b619c42f3380a9e869/GOVERNANCE.md[Community Specification 1.0, GOVERNANCE.md], Community Specification, 1.0, commit 8a05e46d768ac0525af882b619c42f3380a9e869. link:https://github.com/CommunitySpecification/Community_Specification/blob/8a05e46d768ac0525af882b619c42f3380a9e869/GOVERNANCE.md[Copie fixée à un archivage]
 
 * link:https://www.first.org/cvss/v4.0/specification-document[Common Vulnerability Scoring System v4.0: Specification Document], FIRST, 4.0, document version 1.2, 2024-06-18. link:https://web.archive.org/web/20261026064457/https://www.first.org/cvss/v4.0/specification-document[Copie archivée]
 * link:https://www.cve.org/ResourcesSupport/AllResources/CNARules[CVE Numbering Authority (CNA) Operational Rules], CVE Program, version 4.2.1, 2026-10-20. link:https://web.archive.org/web/20261026054457/https://www.cve.org/ResourcesSupport/AllResources/CNARules[Copie archivée]

@@ -51,7 +51,37 @@ The French version uses the French keywords of WRT-011.
 The rules address three parties.
 A project conforms when its repositories, builds and releases meet every MUST rule that applies to them.
 The {abbr-fpsot} security team conforms when it handles each report under SEC-040 to SEC-073.
-A member of the pre-notice list accepts SEC-057 and SEC-058 as the terms of its membership.
+A member of the pre-notice list accepts SEC-057 to SEC-059 as the terms of its membership.
+
+== Which rules apply
+
+Not every rule applies to every repository.
+The table shows where each group of rules applies.
+The repository of a software component holds code that {abbr-fpsot} releases as an artifact, such as an image.
+A specification repository holds a specification, which {abbr-fpsot} releases as books in {abbr-html-first} and {abbr-pdf-first}.
+
+[cols="2,2,2,1",options="header"]
+|===
+|Rules |Software component repository |Specification repository |Website
+|SEC-001, SEC-002 |Yes |Yes |No
+|SEC-003 to SEC-006 |Yes, for each product |No |No
+|SEC-010 to SEC-017 |Yes |Yes, for the code and workflows it holds |No
+|SEC-020 to SEC-024 |Yes |Yes |Yes
+|SEC-030 to SEC-032 |Yes |Yes |Yes
+|SEC-033, SEC-034 |Yes, for each artifact |No |No
+|SEC-035, SEC-036 |Yes, for each artifact |SHOULD, for the books |No
+|SEC-037 |SHOULD |SHOULD |No
+|SEC-040 to SEC-059 |Yes |Yes, with SEC-070 to SEC-073 |Yes
+|SEC-060 to SEC-064 |Yes |Yes |No
+|SEC-065 |No |No |SHOULD
+|SEC-070 to SEC-073 |No |Yes |No
+|SEC-080 to SEC-084 |Yes |SEC-080 and SEC-084 only |No
+|===
+
+The {abbr-fpsot} organization itself meets SEC-050 to SEC-052, SEC-063 and SEC-064 only once its own `SECURITY.md` file exists.
+The pages of the criteria and of the list of members must exist too.
+
+== Legal status
 
 The specification states the practice of {abbr-fpsot}, and it is not legal advice.
 Points that need a lawyer sit in informative notes, never in a rule.

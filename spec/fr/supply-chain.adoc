@@ -8,24 +8,25 @@ Elles couvrent les dépendances, les actions d’{abbr-ci-first}, la {abbr-sbom-
 == Intrants épinglés
 
 [[SEC-030]]
-*SEC-030.* Chaque projet DOIT épingler chaque dépendance d’une version à une version exacte, dans un fichier de verrouillage.
-Si le gestionnaire de paquets le permet, ce fichier DOIT aussi contenir une empreinte de chaque paquet.
-Une construction de version NE DOIT PAS résoudre une plage de versions au moment de la construction.
-Une construction NE DOIT PAS télécharger et exécuter un script sans version épinglée ni empreinte vérifiée.
-Elle DOIT vérifier la signature ou l’empreinte de tout autre intrant téléchargé, quand l’éditeur en fournit une.
+*SEC-030.* Chaque projet DOIT épingler chaque dépendance directe et transitive d’une version à une version exacte.
+Il DOIT employer un fichier de verrouillage, ou un équivalent qui fixe chaque version, comme une liste gérée de versions.
+La construction DOIT vérifier la somme de contrôle de chaque paquet quand son outil le permet.
+Une version NE DOIT PAS dépendre d’une plage de versions.
 La même source se construit alors toujours à partir des mêmes intrants, et un paquet modifié échoue à la vérification.
 
 [[SEC-031]]
-*SEC-031.* Chaque flux d’{abbr-ci} DOIT épingler chaque action externe par l’empreinte de son commit, avec sa version en commentaire.
+*SEC-031.* Chaque flux d’{abbr-ci} DOIT épingler chaque action externe par l’empreinte de son {term-commit}, avec sa version en commentaire.
 Il PEUT appeler un flux réutilisable de {abbr-fpsot} par son étiquette majeure, comme `@v0`.
 La fondation protège ce dépôt et ses étiquettes.
 Un flux de travail ou une construction DOIT épingler chaque image de conteneur par son condensé.
-Une étiquette peut pointer vers du nouveau code, mais pas une empreinte de commit ni un condensé.
+Une étiquette peut pointer vers du nouveau code, mais pas une empreinte d’archivage ni un condensé.
 Les flux de travail communs de {abbr-fpsot} respectent déjà cette règle, et leur script `check-pinned.sh` la vérifie.
 
 [[SEC-032]]
 *SEC-032.* Un projet DOIT prendre ses dépendances seulement dans les registres que son dépôt déclare.
-Il DEVRAIT préférer un composant pris en charge, sans {term-vulnerability} connue de gravité élevée ou critique.
+Une construction NE DOIT PAS télécharger et exécuter un script sans version épinglée ni empreinte vérifiée.
+Elle DOIT vérifier la signature ou l’empreinte de tout autre intrant téléchargé, quand l’éditeur en fournit une.
+Un projet DEVRAIT préférer un composant pris en charge, sans {term-vulnerability} connue de gravité élevée ou critique.
 Il DOIT remplacer un composant que ses responsables ne prennent plus en charge, ou consigner une exception selon SEC-016.
 Un composant qui n’est plus pris en charge ne recevra plus jamais de correction.
 
@@ -34,12 +35,12 @@ Un composant qui n’est plus pris en charge ne recevra plus jamais de correctio
 Une {abbr-sbom} énumère les composants d’une version, avec leurs versions et leur origine.
 
 [[SEC-033]]
-*SEC-033.* Chaque version DOIT comprendre une {abbr-sbom} pour chaque artefact qu’elle publie.
-La {abbr-sbom} DOIT être au format link:https://cyclonedx.org/specification/overview/[CycloneDX] 1.7, celui de la 2^e^ édition de link:https://ecma-international.org/publications-and-standards/standards/ecma-424/[ECMA-424], en {abbr-json-first}.
+*SEC-033.* Chaque version d’un composant logiciel DOIT comprendre une {abbr-sbom} pour chaque artefact qu’elle publie.
+La {abbr-sbom} DOIT employer link:https://cyclonedx.org/specification/overview/[CycloneDX] 1.7, ou une version ultérieure de link:https://ecma-international.org/publications-and-standards/standards/ecma-424/[ECMA-424], en {abbr-json-first}.
+Jusqu’au 2027-06-30, elle PEUT employer CycloneDX 1.6, format de la 1^re^ édition d’ECMA-424, que produisent les outils actuels.
 Un projet PEUT aussi publier une {abbr-sbom} au format link:https://spdx.github.io/spdx-spec/v3.0.1/[SPDX] 3.0.1.
 La {abbr-sbom} DOIT énumérer chaque composant de l’artefact, avec sa version et l’{abbr-url-first} de son paquet.
-CycloneDX est une norme Ecma, ses outils couvrent les constructions de {abbr-fpsot}, et il porte des données de vulnérabilité.
-Un seul format par défaut permet de lire chaque {abbr-sbom} de la fondation avec le même outil.
+CycloneDX est une norme Ecma qui porte des données de vulnérabilité, et un seul format se lit avec un outil.
 
 [[SEC-034]]
 *SEC-034.* La construction DOIT produire la {abbr-sbom} à partir de sa propre liste de dépendances résolues.
@@ -51,17 +52,18 @@ Un exécutable natif intègre ses dépendances dans un seul fichier, et un balay
 La provenance est un relevé signé qui indique comment, où et avec quelle source on a construit un artefact.
 
 [[SEC-035]]
-*SEC-035.* Chaque artefact d’une version DOIT avoir une provenance qui atteint le niveau de build 2 de link:https://slsa.dev/spec/v1.2/[SLSA v1.2].
-Un projet DEVRAIT atteindre le niveau de build 3.
+*SEC-035.* Chaque artefact logiciel DOIT avoir une provenance qui atteint le niveau de construction 2 de link:https://slsa.dev/spec/v1.2/[SLSA v1.2].
+Un projet DEVRAIT atteindre le niveau de construction 3.
 La construction DOIT s’exécuter sur un service hébergé, à partir d’une étiquette signée de VCS-106, jamais sur un ordinateur personnel.
-Le projet DOIT publier la provenance avec la version.
-Au niveau 2, un service hébergé produit et signe la provenance, que personne ne peut modifier en secret.
-Le niveau 3 ajoute des constructions isolées, et des clés de signature hors de portée de la construction.
+Le projet DOIT publier la provenance avec la version, et une version de spécification DEVRAIT publier celle de ses livres.
+Au niveau 2, un service hébergé signe la provenance, que personne ne peut modifier en secret.
+Le niveau 3 isole aussi chaque construction, et garde les clés de signature hors de sa portée.
 
 [[SEC-036]]
-*SEC-036.* Chaque artefact d’une version DOIT porter une signature, ou figurer avec son empreinte dans une liste signée.
+*SEC-036.* Chaque artefact d’un composant logiciel DOIT porter une signature, ou figurer avec son empreinte dans une liste signée.
 Le projet DOIT publier comment vérifier la signature et l’identité de la personne ou du service signataire.
-L’étiquette de la version suit VCS-106, qui exige une signature.
+L’étiquette de chaque version, de code ou de spécification, porte une signature selon VCS-106.
+Une version de spécification DEVRAIT aussi signer ses livres, comme le fera une version ultérieure du flux de publication commun.
 Chacun peut alors vérifier qu’un artefact vient du projet et que personne ne l’a modifié.
 Des outils comme link:https://www.sigstore.dev/[Sigstore] ou les attestations d’artefacts de la forge n’y figurent qu’à titre d’exemples.
 

@@ -14,12 +14,17 @@ A security flaw in a specification is one of these:
 *SEC-070.* A person MUST report a security flaw in a specification through the private channels of SEC-040.
 The specification's Working Group MUST NOT receive or discuss the flaw before its public release.
 Its issues, pull requests, meetings and mailing lists are Working Group activity.
-Section 5 of the link:https://github.com/CommunitySpecification/Community_Specification/blob/8a05e46d768ac0525af882b619c42f3380a9e869/GOVERNANCE.md[governance file of the Community Specification 1.0] makes all of it non-confidential.
+Section 5 of the link:https://github.com/CommunitySpecification/Community_Specification/blob/8a05e46d768ac0525af882b619c42f3380a9e869/GOVERNANCE.md[governance file of the Community Specification 1.0] says that all of it is not confidential.
 
 [[SEC-071]]
 *SEC-071.* The security team MUST prepare the fix outside the Working Group repositories, such as in a private fork.
-It MAY ask a maintainer of the specification to help.
-That person then acts as a member of the security team under SEC-042, not of the Working Group.
+It MAY ask a maintainer of the specification to help, under these conditions:
+
+* the maintainer signs the pledge of SEC-042, and the record of SEC-048 names them;
+* the maintainer acts as an individual, not for the Working Group or for an employer;
+* the maintainer does not count toward the three members of SEC-042;
+* the maintainer does not use the information for an employer before the pre-notice.
+
 The fix then reaches the Working Group as a contribution at its public release.
 A fix drafted in the open would show the flaw before implementers can act.
 
@@ -29,8 +34,9 @@ The changelog MUST list it under a `Security` heading, and MUST state each rule 
 A patch release reaches implementers quickly, and the changelog shows them what to change in their code.
 
 [[SEC-073]]
-*SEC-073.* A security flaw in a specification MUST follow the pre-notice and the dates of SEC-050 to SEC-058.
+*SEC-073.* A security flaw in a specification MUST follow the pre-notice and the dates of SEC-050 to SEC-059.
 The security advisory MUST name the specification, its affected versions and the rules at fault.
+The team MAY rate its severity as low, medium, high or critical, or score a conforming implementation under SEC-044.
 The security team SHOULD request a {abbr-cve-first} identifier when a conforming implementation is vulnerable.
 Implementers then get the same head start and the same public notice as users of the code.
 
@@ -38,7 +44,7 @@ Implementers then get the same head start and the same public notice as users of
 
 === Normative
 
-* link:https://github.com/CommunitySpecification/Community_Specification/blob/8a05e46d768ac0525af882b619c42f3380a9e869/GOVERNANCE.md[Community Specification 1.0, GOVERNANCE.md], Community Specification, 1.0, commit 8a05e46d768ac0525af882b619c42f3380a9e869. link:https://github.com/CommunitySpecification/Community_Specification/blob/8a05e46d768ac0525af882b619c42f3380a9e869/GOVERNANCE.md[Archived copy]
+* link:https://github.com/CommunitySpecification/Community_Specification/blob/8a05e46d768ac0525af882b619c42f3380a9e869/GOVERNANCE.md[Community Specification 1.0, GOVERNANCE.md], Community Specification, 1.0, commit 8a05e46d768ac0525af882b619c42f3380a9e869. link:https://github.com/CommunitySpecification/Community_Specification/blob/8a05e46d768ac0525af882b619c42f3380a9e869/GOVERNANCE.md[Copy pinned to a commit]
 
 == Document history
 

@@ -58,6 +58,7 @@ Fast updates close known vulnerabilities, and a review catches an update that a 
 *SEC-016.* Each exception to a finding of SEC-012 to SEC-014 MUST record its reason, its owner and its end date.
 The end date MUST NOT fall more than 90 days after the record.
 A maintainer other than the owner MUST approve it, under SEC-010.
+The team MAY renew an exception once, after a new review and a new approval.
 An exception without an end date hides a risk forever.
 
 == Tools

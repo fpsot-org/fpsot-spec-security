@@ -26,7 +26,7 @@ Cette partie fixe aussi l’avance et la publication.
 == Spécifications liées
 
 Cette spécification s’appuie sur d’autres spécifications de {abbr-fpsot}.
-La spécification sur la gestion des versions fixe les commits et les étiquettes signés, et les branches protégées.
+La spécification sur la gestion des versions fixe les archivages et les étiquettes signés, et les branches protégées.
 La spécification sur la documentation fixe les diagrammes sous forme de code qu’emploie un modèle de menaces.
 La spécification sur la conception d’{abbr-api-first} fixe les règles de sécurité que vérifient les tests de sécurité.
 La spécification sur les tests fixe les niveaux de test et les vérifications obligatoires qui exécutent les tests de sécurité.
@@ -52,7 +52,37 @@ La version française emploie les mots clés français de l’exigence WRT-011.
 Les règles visent trois parties.
 Un projet est conforme quand ses dépôts, ses constructions et ses versions respectent chaque règle DOIT qui les vise.
 L’équipe de sécurité de {abbr-fpsot} est conforme quand elle traite chaque signalement selon SEC-040 à SEC-073.
-Un membre de la liste de préavis accepte SEC-057 et SEC-058 comme conditions de son adhésion.
+Un membre de la liste de préavis accepte SEC-057 à SEC-059 comme conditions de son adhésion.
+
+== Règles applicables
+
+Chaque règle ne s’applique pas à chaque dépôt.
+Le tableau montre où s’applique chaque groupe de règles.
+Le dépôt d’un composant logiciel contient du code que {abbr-fpsot} publie sous forme d’artefact, comme une image.
+Un dépôt de spécification contient une spécification, que {abbr-fpsot} publie sous forme de livres en {abbr-html-first} et en {abbr-pdf-first}.
+
+[cols="2,2,2,1",options="header"]
+|===
+|Règles |Dépôt d’un composant logiciel |Dépôt de spécification |Site Web
+|SEC-001, SEC-002 |Oui |Oui |Non
+|SEC-003 à SEC-006 |Oui, pour chaque produit |Non |Non
+|SEC-010 à SEC-017 |Oui |Oui, pour le code et les flux de travail qu’il contient |Non
+|SEC-020 à SEC-024 |Oui |Oui |Oui
+|SEC-030 à SEC-032 |Oui |Oui |Oui
+|SEC-033, SEC-034 |Oui, pour chaque artefact |Non |Non
+|SEC-035, SEC-036 |Oui, pour chaque artefact |DEVRAIT, pour les livres |Non
+|SEC-037 |DEVRAIT |DEVRAIT |Non
+|SEC-040 à SEC-059 |Oui |Oui, avec SEC-070 à SEC-073 |Oui
+|SEC-060 à SEC-064 |Oui |Oui |Non
+|SEC-065 |Non |Non |DEVRAIT
+|SEC-070 à SEC-073 |Non |Oui |Non
+|SEC-080 à SEC-084 |Oui |SEC-080 et SEC-084 seulement |Non
+|===
+
+L’organisation {abbr-fpsot} elle-même respecte SEC-050 à SEC-052, SEC-063 et SEC-064 seulement quand son propre fichier `SECURITY.md` existe.
+Les pages des critères et de la liste des membres doivent exister aussi.
+
+== Statut juridique
 
 La spécification énonce la pratique de {abbr-fpsot}, et ne constitue pas un avis juridique.
 Les points qui exigent l’avis d’un ou d’une juriste figurent dans des notes informatives, jamais dans une règle.

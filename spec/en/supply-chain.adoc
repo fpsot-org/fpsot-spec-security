@@ -8,15 +8,14 @@ They cover dependencies, {abbr-ci-first} actions, the {abbr-sbom-first}, build p
 == Pinned inputs
 
 [[SEC-030]]
-*SEC-030.* Each project MUST pin every dependency of a release to an exact version, in a lock file.
-Where the package manager supports it, the lock file MUST also hold a hash of each package.
-A release build MUST NOT resolve a version range at build time.
-A build MUST NOT fetch and run a script from the network without a pinned version and a checked hash.
-It MUST check the signature or hash of each other input it downloads, when the publisher provides one.
-The same source then always builds from the same inputs, and a changed package fails the check of its hash.
+*SEC-030.* Each project MUST pin every direct and transitive dependency of a release to an exact version.
+It MUST use a lock file, or an equivalent that fixes every version, such as a managed list of versions.
+The build MUST verify the checksum of each package where its tool supports it.
+A release MUST NOT depend on a version range.
+The same source then always builds from the same inputs, and a changed package fails its check.
 
 [[SEC-031]]
-*SEC-031.* Each {abbr-ci} workflow MUST pin every outside action by its full commit hash, with its version in a comment.
+*SEC-031.* Each {abbr-ci} workflow MUST pin every outside action by its full {term-commit} hash, with its version in a comment.
 A workflow MAY call a reusable workflow of {abbr-fpsot} by its major tag, such as `@v0`.
 The foundation protects that repository and its tags.
 A workflow or a build MUST pin each container image by its digest.
@@ -25,7 +24,9 @@ The shared {abbr-fpsot} workflows already meet this rule, and their script `chec
 
 [[SEC-032]]
 *SEC-032.* A project MUST take its dependencies only from the registries that its repository declares.
-It SHOULD prefer a supported component with no known {term-vulnerability} of high or critical severity.
+A build MUST NOT fetch and run a script from the network without a pinned version and a checked hash.
+It MUST check the signature or hash of each other input it downloads, when the publisher provides one.
+A project SHOULD prefer a supported component with no known {term-vulnerability} of high or critical severity.
 It MUST replace a component that its maintainers no longer support, or record an exception under SEC-016.
 An unsupported component never gets another fix.
 
@@ -34,12 +35,12 @@ An unsupported component never gets another fix.
 An {abbr-sbom} lists the components of a release, with their versions and their origin.
 
 [[SEC-033]]
-*SEC-033.* Each release MUST include an {abbr-sbom} for each artifact that it publishes.
-The {abbr-sbom} MUST be in link:https://cyclonedx.org/specification/overview/[CycloneDX] 1.7, the format of link:https://ecma-international.org/publications-and-standards/standards/ecma-424/[ECMA-424] 2nd edition, in {abbr-json-first}.
+*SEC-033.* Each release of a software component MUST include an {abbr-sbom} for each artifact that it publishes.
+The {abbr-sbom} MUST use link:https://cyclonedx.org/specification/overview/[CycloneDX] 1.7, or a later version of link:https://ecma-international.org/publications-and-standards/standards/ecma-424/[ECMA-424], in {abbr-json-first}.
+Until 2027-06-30, it MAY use CycloneDX 1.6, the format of the 1st edition of ECMA-424, which current build plugins produce.
 A project MAY also publish an {abbr-sbom} in link:https://spdx.github.io/spdx-spec/v3.0.1/[SPDX] 3.0.1.
 The {abbr-sbom} MUST list every component that the artifact contains, with its version and its package {abbr-url-first}.
-CycloneDX is an Ecma standard, its tools cover the build systems of {abbr-fpsot}, and it can carry vulnerability data.
-One default format lets each adopter read every {abbr-sbom} of the foundation with the same tool.
+CycloneDX is an Ecma standard that carries vulnerability data, and one format lets adopters read every {abbr-sbom} with one tool.
 
 [[SEC-034]]
 *SEC-034.* The build MUST produce the {abbr-sbom} from its own list of resolved dependencies.
@@ -51,17 +52,18 @@ A native executable links its dependencies into one file, so a scan of the file 
 Provenance is a signed record of how, where and from what source a build made an artifact.
 
 [[SEC-035]]
-*SEC-035.* Each release artifact MUST have provenance that meets Build Level 2 of link:https://slsa.dev/spec/v1.2/[SLSA v1.2].
+*SEC-035.* Each artifact of a software component MUST have provenance that meets Build Level 2 of link:https://slsa.dev/spec/v1.2/[SLSA v1.2].
 A project SHOULD reach Build Level 3.
 The build MUST run on a hosted build service from a signed tag of VCS-106, never on a personal computer.
-The project MUST publish the provenance with the release.
-At Build Level 2, a hosted service produces and signs the provenance, so nobody can alter it unseen.
-Build Level 3 adds builds that cannot affect each other, and signing keys that the build itself cannot reach.
+The project MUST publish the provenance with the release, and a specification release SHOULD publish provenance for its books.
+At Build Level 2, a hosted service signs the provenance, so nobody can alter it unseen.
+Build Level 3 also isolates each build, and keeps the signing keys out of its reach.
 
 [[SEC-036]]
-*SEC-036.* Each release artifact MUST carry a signature, or appear with its hash in a signed list of the release.
+*SEC-036.* Each artifact of a software component MUST carry a signature, or appear with its hash in a signed list.
 The project MUST publish how to check the signature and the identity of the signer.
-The tag of the release follows VCS-106, which requires a signature.
+The tag of each release, of code or of a specification, carries a signature under VCS-106.
+A specification release SHOULD also sign its books, as a later version of the shared release workflow will do.
 A user can then check that an artifact comes from the project and that nobody changed it.
 Tools such as link:https://www.sigstore.dev/[Sigstore] or the artifact attestations of the forge appear only as examples.
 

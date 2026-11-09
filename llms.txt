@@ -1,6 +1,6 @@
 # FPSOT security specification
 
-> How FPSOT projects build, release and maintain software and specifications securely: an SSDF 1.1 profile, threat models, ASVS 5.0.0 levels, review and analysis in CI, secrets, pinned inputs, CycloneDX SBOMs, SLSA provenance and signed releases, private vulnerability reporting, CVSS v4.0, CVE and OSV advisories, a free pre-notice to public-sector adopters, supported versions, SECURITY.md, flaws in specifications and security tests.
+> How FPSOT projects build, release and maintain software and specifications securely: an SSDF 1.1 profile, threat models, ASVS 5.0.0 levels, review and analysis in CI, secrets, pinned inputs, CycloneDX SBOMs, SLSA provenance and signed releases, private vulnerability reporting, CVSS v4.0, CVE and OSV advisories, a free pre-notice to public bodies and their hosting providers and integrators, supported versions, SECURITY.md, flaws in specifications and security tests.
 
 ## Specification
 
@@ -9,8 +9,8 @@
 - [Code, review and analysis](spec/en/code-review.adoc): SEC-010 to SEC-017.
 - [Secrets](spec/en/secrets.adoc): SEC-020 to SEC-024.
 - [Supply chain](spec/en/supply-chain.adoc): SEC-030 to SEC-037.
-- [Reporting and handling vulnerabilities](spec/en/reporting.adoc): SEC-040 to SEC-048.
-- [Pre-notice and disclosure](spec/en/disclosure.adoc): SEC-050 to SEC-058.
+- [Reporting and handling vulnerabilities](spec/en/reporting.adoc): SEC-040 to SEC-049.
+- [Pre-notice and disclosure](spec/en/disclosure.adoc): SEC-050 to SEC-059.
 - [Supported versions and security files](spec/en/releases.adoc): SEC-060 to SEC-065.
 - [Flaws in specifications](spec/en/specifications.adoc): SEC-070 to SEC-073.
 - [Security tests](spec/en/security-tests.adoc): SEC-080 to SEC-084.

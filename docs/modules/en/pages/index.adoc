@@ -22,7 +22,7 @@ Open a private record of the report, under SEC-048.
 
 Reproduce the flaw on a supported version.
 Score it with {abbr-cvss-first} v4.0 and record the full vector, under SEC-044.
-For example, a flaw that lets any caller on the network read the data of others could score as follows.
+For example, a flaw that lets any signed-in caller read the data of others could score as follows.
 
 [source,text]
 ----
@@ -65,8 +65,9 @@ Severity: High. Details will follow with the release.
 
 == Watch for leaks
 
-If a member reports a leak, or signs of exploitation appear, decide at once whether to release early, under SEC-055.
-Remove from the list any member through which the pre-notice leaked, under SEC-058.
+If a member reports a leak, assess at once whether the details leaked, under SEC-058.
+If they did, or if signs of exploitation appear, release at once under SEC-055.
+Remove a member only after a short review shows that the leak came through it, under SEC-059.
 
 == Release
 

@@ -25,7 +25,7 @@ Its status depends on each product and on how it funds its work, so a lawyer mus
 
 From 11 December 2027, a steward must have a documented cybersecurity policy that covers vulnerability handling.
 It must also report each actively exploited {term-vulnerability} to the extent that it takes part in the development.
-Such a report goes through the single reporting platform of ENISA.
+Such a report goes through the link:https://www.enisa.europa.eu/news/the-cra-single-reporting-platform-is-launched[single reporting platform] of ENISA.
 The act sets an early warning within 24 hours and a notification within 72 hours.
 A final report follows within 14 days of a fix, and the act sets no fines for stewards.
 This specification aims to give {abbr-fpsot} that policy, and SEC-055 already releases at once when attackers exploit a flaw.
@@ -49,13 +49,19 @@ It sets no rule on how a vendor discloses a {term-vulnerability}.
 The Québec link:https://cdn-contenu.quebec.ca/cdn-contenu/adm/min/cybersecurite_numerique/Publications/DIR_securite_information_2021.pdf[Directive gouvernementale sur la sécurité de l’information] dates from 2021.
 It asks each public body to report a security event with a risk of serious harm without delay.
 It gives no number of hours, and it sets no deadline to deploy a fix.
-The law of Québec on personal information applies only when personal information leaks.
+The law of Québec on personal information applies to a confidentiality incident.
+Such an incident is any access, use or disclosure without authority, or any loss of personal information.
 A {term-vulnerability} on its own is not an incident under that law.
+
+The foundation keeps the names and email addresses of reporters, which are personal information.
+As a private organization in Québec, it likely falls under the Québec law on personal information in the private sector.
+A lawyer must confirm this.
 
 == References
 
 === Informative
 
+* link:https://www.enisa.europa.eu/news/the-cra-single-reporting-platform-is-launched[The CRA Single Reporting Platform is launched], European Union Agency for Cybersecurity, 2026-09-11. link:https://web.archive.org/web/20261105083731/https://www.enisa.europa.eu/news/the-cra-single-reporting-platform-is-launched[Archived copy]
 * link:https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng[Regulation (EU) 2024/2847 on horizontal cybersecurity requirements for products with digital elements (Cyber Resilience Act)], European Parliament and Council of the European Union, 2024-10-23. link:https://web.archive.org/web/20261108180849/https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng[Archived copy]
 * link:https://www.canada.ca/en/government/system/digital-government/online-security-privacy/patch-management-guidance.html[Patch Management Guidance], Treasury Board of Canada Secretariat, 2020-09-30. link:https://web.archive.org/web/20251025213003/https://www.canada.ca/en/government/system/digital-government/online-security-privacy/patch-management-guidance.html[Archived copy]
 * link:https://www.canada.ca/en/government/system/digital-government/policies-standards/spin/direction-government-canada-cyber-security-readiness-frontier-artificial-intelligence-era.html[Direction on Government of Canada cyber security readiness in the frontier artificial intelligence era], Treasury Board of Canada Secretariat, 2026-10-01. link:https://web.archive.org/web/20261011005842/https://www.canada.ca/en/government/system/digital-government/policies-standards/spin/direction-government-canada-cyber-security-readiness-frontier-artificial-intelligence-era.html[Archived copy]

@@ -57,7 +57,7 @@ An operator learns which controls are its own duty, and a reader sees why the te
 
 The {abbr-asvs-first} of the {abbr-owasp-first} sets security requirements for applications, in three levels.
 Level 1 is the minimum for any application.
-Level 2 suits most applications that handle sensitive data.
+Most applications should strive for Level 2, but each organization picks its level from a risk analysis.
 Level 3 suits the most critical applications.
 
 [[SEC-005]]

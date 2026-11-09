@@ -12,7 +12,7 @@ rows:
     source: {title: "Centre gouvernemental de cyberdéfense, Signalement de vulnérabilités", url: "https://www.cyber.gouv.qc.ca/signalements/signalement-vulnerabilites", archive: "https://web.archive.org/web/20260114112158/https://www.cyber.gouv.qc.ca/signalements/signalement-vulnerabilites"}
     last_checked: "2026-11-08"
   - id: SEC-055
-    text: {en: "A person who reports a vulnerability must ask the Centre gouvernemental de cyberdéfense for permission before making it public. The conditions set no deadline for that permission, while FPSOT publishes within 90 days.", fr: "La personne qui signale une vulnérabilité doit demander l’autorisation du Centre gouvernemental de cyberdéfense avant de la rendre publique. Les conditions ne fixent aucun délai pour cette autorisation, alors que FPSOT publie dans les 90 jours."}
-    status: looser
+    text: {en: "A person who reports a vulnerability must ask the Centre gouvernemental de cyberdéfense for permission before making it public. The conditions set no deadline for that permission. They cover the systems of the government, not the software of suppliers.", fr: "La personne qui signale une vulnérabilité doit demander l’autorisation du Centre gouvernemental de cyberdéfense avant de la rendre publique. Les conditions ne fixent aucun délai pour cette autorisation. Elles visent les systèmes du gouvernement, et non les logiciels des fournisseurs."}
+    status: not-covered
     source: {title: "Centre gouvernemental de cyberdéfense, Signalement de vulnérabilités, Conditions d’utilisation", url: "https://www.cyber.gouv.qc.ca/signalements/conditions-utilisation", archive: "https://web.archive.org/web/20260213003332/https://www.cyber.gouv.qc.ca/signalements/conditions-utilisation"}
     last_checked: "2026-11-08"

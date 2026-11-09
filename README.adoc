@@ -2,7 +2,7 @@
 
 Rules for how FPSOT projects build, release and maintain their software and specifications securely.
 It profiles the NIST Secure Software Development Framework 1.1, sets security requirements from OWASP ASVS 5.0.0, and covers review, analysis, secrets and the supply chain: pinned inputs, a CycloneDX SBOM, SLSA provenance and signed releases.
-It also sets how vulnerabilities are reported in private, scored with CVSS v4.0 and disclosed, with a free pre-notice to public-sector adopters.
+It also sets how vulnerabilities are reported in private, scored with CVSS v4.0 and disclosed, with a free pre-notice to public bodies and to the hosting providers and integrators that run FPSOT components for them.
 The rules name capabilities, not tools. Version 0.1 is a draft.
 
 == Implement this spec
@@ -12,7 +12,8 @@ Each requirement has an ID from `SEC-001` to `SEC-084`.
 
 * Keep a threat model in each product repository, and record its ASVS level (SEC-003 to SEC-006).
 * Run static analysis, secret scanning and dependency checks as required checks of each pull request (SEC-012 to SEC-014, SEC-080).
-* Pin every dependency and CI action, and publish an SBOM, provenance and signatures with each release (SEC-030 to SEC-037).
+* Pin every dependency and CI action, and publish an SBOM, provenance and signatures with each software release (SEC-030 to SEC-037).
+  The table "Which rules apply" in `spec/en/index.adoc` shows which rules apply to software, specification and website repositories.
 * Copy `examples/SECURITY.md` into each repository, fill in its placeholders, and turn on private vulnerability reporting (SEC-063, SEC-064).
 
 Never report or discuss a vulnerability in a Working Group or a public issue.
@@ -22,7 +23,9 @@ Working Group activity is not confidential under section 5 of the Community Spec
 
 Read the guide in `docs/modules/en/pages/index.adoc` or `docs/modules/fr/pages/index.adoc`.
 It walks through one report, from receipt to public release.
-A public body that uses an FPSOT component can join the pre-notice list free of charge, and receives each fix before the public (SEC-050 to SEC-058).
+A public body that uses an FPSOT component can join the pre-notice list free of charge, and receives each fix before the public (SEC-050 to SEC-059).
+So can a hosting provider or an integrator that runs the component in production for it.
+FPSOT itself meets SEC-050 to SEC-052, SEC-063 and SEC-064 only once its org-wide `SECURITY.md`, its criteria page and its member list exist.
 A request for proposals can require that a supplier meet this specification, or a given ASVS level (SEC-005).
 The comparison data in `jurisdictions/` shows how the guidance of Canada and Québec differs.
 The page `legal-context.adoc` is informative and is not legal advice.

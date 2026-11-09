@@ -22,7 +22,7 @@ Ouvrez un registre privé du signalement, selon SEC-048.
 
 Reproduisez la faille sur une version prise en charge.
 Cotez-la avec le {abbr-cvss-first} v4.0 et consignez le vecteur complet, selon SEC-044.
-Par exemple, une faille qui permet à tout appelant du réseau de lire les données d’autrui pourrait recevoir cette cote.
+Par exemple, une faille qui permet à tout appelant connecté de lire les données d’autrui pourrait recevoir cette cote.
 
 [source,text]
 ----
@@ -65,8 +65,9 @@ Gravité : élevée. Les détails suivront avec la publication.
 
 == Surveiller les fuites
 
-Si un membre signale une fuite, ou si une exploitation apparaît, décidez immédiatement s’il faut publier plus tôt, selon SEC-055.
-Retirez de la liste tout membre par lequel le préavis a fui, selon SEC-058.
+Si un membre signale une fuite, évaluez immédiatement si les détails ont fui, selon SEC-058.
+Si c’est le cas, ou si une exploitation apparaît, publiez immédiatement selon SEC-055.
+Retirez un membre seulement si une courte revue montre que la fuite est passée par lui, selon SEC-059.
 
 == Publier
 

@@ -24,10 +24,10 @@ Ce sont les composants que d’autres intègrent à des produits vendus dans l�
 Son statut dépend de chaque produit et de son financement : un ou une juriste doit le trancher.
 
 Dès le 11 décembre 2027, un intendant doit avoir une politique de cybersécurité documentée, qui couvre le traitement des vulnérabilités.
-Il doit aussi signaler à l’ENISA chaque {term-vulnerability} activement exploitée, dans la mesure où il participe au développement.
+Il doit aussi signaler chaque {term-vulnerability} activement exploitée, dans la mesure où il participe au développement.
+Ce signalement passe par la link:https://www.enisa.europa.eu/news/the-cra-single-reporting-platform-is-launched[plateforme unique de signalement] de l’ENISA.
 Le règlement prévoit une alerte précoce dans les 24 heures et une notification dans les 72 heures.
-Un rapport final suit dans les 14 jours après une correction.
-Le règlement ne prévoit aucune amende pour les intendants.
+Un rapport final suit 14 jours après une correction, et le règlement ne prévoit aucune amende pour les intendants.
 Cette spécification vise à donner cette politique à {abbr-fpsot}, et SEC-055 publie déjà immédiatement quand des attaquants exploitent une faille.
 
 == Délais des destinataires au Canada
@@ -49,13 +49,19 @@ Elle ne fixe aucune règle sur la façon dont un fournisseur divulgue une {term-
 La link:https://cdn-contenu.quebec.ca/cdn-contenu/adm/min/cybersecurite_numerique/Publications/DIR_securite_information_2021.pdf[Directive gouvernementale sur la sécurité de l’information] date de 2021.
 Elle demande à chaque organisme public de déclarer sans délai tout événement de sécurité à risque de préjudice grave.
 Elle ne donne aucun nombre d’heures, et ne fixe aucun délai pour déployer une correction.
-La loi du Québec sur les renseignements personnels s’applique seulement quand des renseignements personnels fuient.
+La loi du Québec sur les renseignements personnels s’applique à un incident de confidentialité.
+Un tel incident est tout accès, usage ou communication non autorisés, ou toute perte de renseignements personnels.
 Une {term-vulnerability} seule n’est pas un incident selon cette loi.
+
+La fondation garde les noms et les adresses courriel des personnes qui signalent, qui sont des renseignements personnels.
+Comme organisation privée du Québec, elle relève probablement de la loi québécoise sur les renseignements personnels dans le secteur privé.
+Un ou une juriste doit le confirmer.
 
 == Références
 
 === Références informatives
 
+* link:https://www.enisa.europa.eu/news/the-cra-single-reporting-platform-is-launched[The CRA Single Reporting Platform is launched], European Union Agency for Cybersecurity, 2026-09-11. link:https://web.archive.org/web/20261105083731/https://www.enisa.europa.eu/news/the-cra-single-reporting-platform-is-launched[Copie archivée]
 * link:https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng[Regulation (EU) 2024/2847 on horizontal cybersecurity requirements for products with digital elements (Cyber Resilience Act)], European Parliament and Council of the European Union, 2024-10-23. link:https://web.archive.org/web/20261108180849/https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng[Copie archivée]
 * link:https://www.canada.ca/en/government/system/digital-government/online-security-privacy/patch-management-guidance.html[Patch Management Guidance], Treasury Board of Canada Secretariat, 2020-09-30. link:https://web.archive.org/web/20251025213003/https://www.canada.ca/en/government/system/digital-government/online-security-privacy/patch-management-guidance.html[Copie archivée]
 * link:https://www.canada.ca/en/government/system/digital-government/policies-standards/spin/direction-government-canada-cyber-security-readiness-frontier-artificial-intelligence-era.html[Direction on Government of Canada cyber security readiness in the frontier artificial intelligence era], Treasury Board of Canada Secretariat, 2026-10-01. link:https://web.archive.org/web/20261011005842/https://www.canada.ca/en/government/system/digital-government/policies-standards/spin/direction-government-canada-cyber-security-readiness-frontier-artificial-intelligence-era.html[Copie archivée]

@@ -61,6 +61,7 @@ Des mises à jour rapides ferment les failles connues, et une revue repère un p
 Elle DOIT aussi nommer la personne qui en est responsable.
 La date de fin NE DOIT PAS tomber plus de 90 jours après la consignation.
 Un ou une autre responsable DOIT l’approuver, selon SEC-010.
+L’équipe PEUT renouveler une exception une fois, après une nouvelle revue et une nouvelle approbation.
 Une exception sans date de fin cache un risque pour toujours.
 
 == Outils
