@@ -1,0 +1,71 @@
+= Supported versions and security files
+include::_fpsot-terms.adoc[]
+
+These rules set which versions of a product of the {abbr-fpsot-first} receive security fixes.
+They also set how a version reaches its end of life, and what each repository publishes on its security.
+
+== Supported versions
+
+[[SEC-060]]
+*SEC-060.* Each project MUST publish the versions that get security fixes, in its `SECURITY.md` file.
+It MUST support at least the latest minor version of its latest major version.
+After a new major version ships, the project SHOULD fix the previous one for at least 12 months.
+Those fixes go on a `release/N.x` branch of VCS-107.
+An adopter can then plan its upgrades, and knows when a version no longer gets fixes.
+
+[[SEC-061]]
+*SEC-061.* A project MUST announce the end of security support of a major version at least 6 months ahead.
+The notice MUST appear in the `SECURITY.md` file, in the release notes and with the public date notices of SEC-056.
+After that date, the project MUST NOT promise fixes for that version.
+The security team MAY still fix it once, for a critical {term-vulnerability} that attackers exploit, with the reason recorded.
+A public body needs months to budget, test and deploy an upgrade.
+
+== Fixes in releases
+
+[[SEC-062]]
+*SEC-062.* A project MUST ship each security fix as a patch release of each affected supported version.
+The release MUST hold the fix and the changes it needs, and SHOULD hold nothing else.
+The changelog MUST list the fix under a `Security` heading, with the identifier of its security advisory.
+A small release is fast to test, which is what an adopter needs within a short head start.
+
+== The SECURITY.md file
+
+[[SEC-063]]
+*SEC-063.* Each repository of code or of a specification MUST have a `SECURITY.md` file, at its root or in `.github/`.
+The file MUST give, in English and in French:
+
+* the private channels of SEC-040, and a warning not to use a public issue or a Working Group;
+* the supported versions and the end dates of SEC-060 and SEC-061;
+* the times of SEC-043, and the {abbr-cvss-first} version of SEC-044;
+* a summary of the pre-notice and the dates of SEC-050 to SEC-056;
+* links to the criteria and to the list of members;
+* how to verify a release, under SEC-036;
+* how {abbr-fpsot} credits reporters, under SEC-046.
+
+A repository MAY copy the template in `examples/SECURITY.md` of this specification.
+Readers and tools look for this file by name.
+The forge also shows it as the security policy of the repository.
+
+[[SEC-064]]
+*SEC-064.* Each repository MUST turn on the private vulnerability reporting of its forge, or an equal private channel.
+When the forge has no such feature, the `SECURITY.md` file MUST point to the second channel of SEC-040.
+A reporter then reaches the right people in one step, from the repository itself.
+
+[[SEC-065]]
+*SEC-065.* Each website of {abbr-fpsot} SHOULD publish a `security.txt` file, as link:https://www.rfc-editor.org/info/rfc9116[RFC 9116] describes.
+The file SHOULD point to the same channels and policy as the `SECURITY.md` file.
+Researchers who find a flaw through a website look for this file first.
+
+== References
+
+=== Informative
+
+* link:https://www.rfc-editor.org/info/rfc9116[RFC 9116, A File Format to Aid in Security Vulnerability Disclosure], IETF, 2022-04. link:https://web.archive.org/web/20261029235042/https://www.rfc-editor.org/info/rfc9116/[Archived copy]
+
+== Document history
+
+[cols="1,1,4",options="header"]
+|===
+|Version |Date |Change
+|0.1.0 |2026-11-08 |First version.
+|===

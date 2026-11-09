@@ -1,0 +1,131 @@
+= Préavis et divulgation
+include::_fpsot-terms.adoc[]
+
+Ces règles fixent qui apprend une {term-vulnerability} corrigée avant le public, et ce que ces personnes reçoivent.
+Elles fixent aussi quand le public l’apprend.
+Elles suivent la divulgation coordonnée : la correction existe avant que les détails deviennent publics.
+
+Les règles emploient ces termes :
+
+Préavis::
+Message privé aux membres de la liste de préavis, avec les détails d’une {term-vulnerability} et sa correction.
+
+Avance::
+Le temps entre le préavis et la publication.
+
+Publication::
+Le moment où la correction et l’avis de sécurité deviennent publics.
+
+Avis public de date::
+Court message public qui donne la date d’une publication à venir, sans aucun détail.
+
+Ces dates s’appliquent aux vulnérabilités des composants et des spécifications de la {abbr-fpsot-first}.
+Les responsables d’un composant externe coordonnent la divulgation de chaque {term-vulnerability} qui s’y trouve.
+
+== La liste de préavis
+
+[[SEC-050]]
+*SEC-050.* {abbr-fpsot} DOIT envoyer chaque préavis à tous les membres d’une seule liste de préavis, en même temps.
+Toute organisation publique connue qui adopte une technologie de {abbr-fpsot} et respecte les critères de SEC-051 DOIT pouvoir y adhérer.
+L’adhésion DOIT être gratuite.
+La fondation NE DOIT PAS vendre d’accès anticipé.
+Elle NE DOIT PAS lier l’adhésion à des frais, à un don, à un contrat ou à un service payant.
+Une correction que seuls des clients payants reçoivent d’abord ferait de la sécurité du public un privilège.
+
+[[SEC-051]]
+*SEC-051.* {abbr-fpsot} DOIT publier des critères d’adhésion objectifs, et chaque membre DOIT tous les respecter :
+
+* c’est un organisme public qui emploie un composant ou une spécification de {abbr-fpsot}, en production ou en projet;
+* il donne une adresse qu’une équipe surveille, comme une adresse de rôle, et qui peut recevoir des messages chiffrés;
+* il accepte par écrit les règles de SEC-057 et de SEC-058.
+
+L’équipe de sécurité DOIT motiver par écrit chaque refus.
+Des critères publics permettent à chaque organisation de savoir si elle est admissible, et aux autres de vérifier chaque décision.
+
+[[SEC-052]]
+*SEC-052.* {abbr-fpsot} DOIT publier la liste des organisations membres, et DOIT la tenir à jour.
+La liste DOIT nommer chaque organisation, mais NE DOIT PAS nommer ses personnes-ressources.
+Une liste publiée montre que l’admission suit les critères, et permet à chaque organisation de voir qui d’autre est membre.
+
+== Le préavis
+
+[[SEC-053]]
+*SEC-053.* Un préavis DOIT donner :
+
+* les détails de la {term-vulnerability} et sa correction, sous forme de correctif ou de version corrigée;
+* le vecteur {abbr-cvss-first}, les versions touchées et corrigées et toute solution de contournement;
+* la date et l’heure de la publication;
+* les obligations des membres prévues à SEC-057.
+
+Un préavis DEVRAIT porter une mention de diffusion qui le garde dans l’organisation du membre.
+`TLP:AMBER+STRICT` du link:https://www.first.org/tlp/[Traffic Light Protocol 2.0] est un exemple d’une telle mention.
+Il DOIT circuler par un canal chiffré ou à accès contrôlé.
+Les membres peuvent tester et préparer la correction seulement s’ils l’ont en main.
+Une mention claire ne laisse aucun doute sur les personnes qui peuvent la voir.
+
+== Dates
+
+[[SEC-054]]
+*SEC-054.* L’avance DOIT être de 7 jours par défaut.
+L’équipe de sécurité PEUT la réduire, jusqu’à 72 heures au moins, pour une correction simple ou une fuite soupçonnée.
+L’équipe de sécurité PEUT l’allonger, jusqu’à 14 jours au plus, pour une correction qui exige des tests d’intégration.
+L’équipe DOIT consigner la raison de toute avance autre que 7 jours.
+Sept jours donnent à un organisme public le temps de tester une correction et de planifier son déploiement.
+Le risque de fuite augmente chaque jour.
+
+[[SEC-055]]
+*SEC-055.* La publication DOIT avoir lieu au plus tard 90 jours après l’arrivée du signalement à l’équipe de sécurité.
+Sans correction à cette date, l’avis de sécurité DOIT quand même paraître, avec les solutions de contournement connues.
+L’équipe de sécurité DOIT publier immédiatement quand elle constate une exploitation de la {term-vulnerability} ou une fuite de ses détails.
+Seule l’équipe de sécurité fait ces constats.
+Un membre qui voit des signes de l’un ou l’autre DOIT les lui signaler.
+Une faille que des attaquants connaissent déjà nuit à chaque organisation qui attend.
+
+[[SEC-056]]
+*SEC-056.* {abbr-fpsot} DOIT publier un avis public de date environ 7 jours avant chaque publication.
+L’avis DOIT donner la date, le composant et la gravité, et NE DOIT PAS donner d’autre détail.
+Quand l’avance est inférieure à 7 jours, l’avis DOIT partir avec le préavis.
+Une publication immédiate selon SEC-055 n’a besoin d’aucun avis.
+Les organisations qui ne sont pas sur la liste, ou que {abbr-fpsot} ne connaît pas, peuvent alors aussi se préparer.
+
+== Obligations des membres
+
+[[SEC-057]]
+*SEC-057.* Un membre PEUT déployer la correction sur les systèmes qu’il exploite, avant la publication.
+Un membre PEUT transmettre le préavis dans sa propre organisation, aux personnes qui déploient la correction.
+Un membre NE DOIT PAS transmettre ni republier le préavis ou la correction hors de son organisation avant la publication.
+Cela inclut un paquet corrigé, une image corrigée et une déclaration publique des détails.
+Un membre PEUT dire qu’une correction s’en vient et donner la date de l’avis public.
+Chaque copie de plus augmente le risque que des attaquants apprennent la faille avant que les autres membres soient prêts.
+
+[[SEC-058]]
+*SEC-058.* Un membre DOIT prévenir l’équipe de sécurité immédiatement quand il apprend ou soupçonne qu’un préavis a fui.
+L’équipe de sécurité DOIT retirer de la liste un membre par lequel un préavis a fui.
+L’équipe DOIT ensuite décider d’une publication immédiate selon SEC-055.
+La liste ne fonctionne que si chaque membre garde le préavis privé : une fuite met donc fin à l’adhésion.
+
+== Points juridiques
+
+[NOTE]
+====
+Cette section est informative et ne constitue pas un avis juridique.
+Les points ci-dessous exigent l’avis d’un ou d’une juriste avant que {abbr-fpsot} s’y fie.
+
+* *Préavis à certains utilisateurs seulement.* Une organisation hors de la liste pourrait invoquer un tort subi pendant l’avance. Les critères publiés, la courte avance et l’avis public de date réduisent ce risque, sans l’éliminer.
+* *Accès à l’information.* La plupart des membres sont des organismes publics, soumis aux lois sur l’accès à l’information. Quelqu’un pourrait demander un préavis à un membre en vertu d’une telle loi. Savoir si le préavis peut alors rester privé est une question juridique.
+* *Le règlement de l’Union européenne sur la cyberrésilience.* Voir xref:legal-context.adoc[Lois et délais des destinataires].
+====
+
+== Références
+
+=== Références informatives
+
+* link:https://www.first.org/tlp/[Traffic Light Protocol (TLP), FIRST Standards Definitions and Usage Guidance], FIRST, version 2.0, 2022-08. link:https://web.archive.org/web/20261023090331/https://www.first.org/tlp/[Copie archivée]
+
+== Historique du document
+
+[cols="1,1,4",options="header"]
+|===
+|Version |Date |Changement
+|0.1.0 |2026-11-08 |Première version.
+|===

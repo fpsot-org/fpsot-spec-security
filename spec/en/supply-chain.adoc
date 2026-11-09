@@ -1,0 +1,95 @@
+= Supply chain
+include::_fpsot-terms.adoc[]
+
+These rules set how an {abbr-fpsot-first} project pins the inputs of its builds.
+They also set how users can check what it releases.
+They cover dependencies, {abbr-ci-first} actions, the {abbr-sbom-first}, build provenance and signatures.
+
+== Pinned inputs
+
+[[SEC-030]]
+*SEC-030.* Each project MUST pin every dependency of a release to an exact version, in a lock file.
+Where the package manager supports it, the lock file MUST also hold a hash of each package.
+A release build MUST NOT resolve a version range at build time.
+A build MUST NOT fetch and run a script from the network without a pinned version and a checked hash.
+It MUST check the signature or hash of each other input it downloads, when the publisher provides one.
+The same source then always builds from the same inputs, and a changed package fails the check of its hash.
+
+[[SEC-031]]
+*SEC-031.* Each {abbr-ci} workflow MUST pin every outside action by its full commit hash, with its version in a comment.
+A workflow MAY call a reusable workflow of {abbr-fpsot} by its major tag, such as `@v0`.
+The foundation protects that repository and its tags.
+A workflow or a build MUST pin each container image by its digest.
+A tag can move to new code, while a commit hash or a digest cannot.
+The shared {abbr-fpsot} workflows already meet this rule, and their script `check-pinned.sh` checks it.
+
+[[SEC-032]]
+*SEC-032.* A project MUST take its dependencies only from the registries that its repository declares.
+It SHOULD prefer a supported component with no known {term-vulnerability} of high or critical severity.
+It MUST replace a component that its maintainers no longer support, or record an exception under SEC-016.
+An unsupported component never gets another fix.
+
+== Software bill of materials
+
+An {abbr-sbom} lists the components of a release, with their versions and their origin.
+
+[[SEC-033]]
+*SEC-033.* Each release MUST include an {abbr-sbom} for each artifact that it publishes.
+The {abbr-sbom} MUST be in link:https://cyclonedx.org/specification/overview/[CycloneDX] 1.7, the format of link:https://ecma-international.org/publications-and-standards/standards/ecma-424/[ECMA-424] 2nd edition, in {abbr-json-first}.
+A project MAY also publish an {abbr-sbom} in link:https://spdx.github.io/spdx-spec/v3.0.1/[SPDX] 3.0.1.
+The {abbr-sbom} MUST list every component that the artifact contains, with its version and its package {abbr-url-first}.
+CycloneDX is an Ecma standard, its tools cover the build systems of {abbr-fpsot}, and it can carry vulnerability data.
+One default format lets each adopter read every {abbr-sbom} of the foundation with the same tool.
+
+[[SEC-034]]
+*SEC-034.* The build MUST produce the {abbr-sbom} from its own list of resolved dependencies.
+It MUST NOT build the {abbr-sbom} only from a scan of the finished artifact.
+A native executable links its dependencies into one file, so a scan of the file can miss them.
+
+== Provenance and signatures
+
+Provenance is a signed record of how, where and from what source a build made an artifact.
+
+[[SEC-035]]
+*SEC-035.* Each release artifact MUST have provenance that meets Build Level 2 of link:https://slsa.dev/spec/v1.2/[SLSA v1.2].
+A project SHOULD reach Build Level 3.
+The build MUST run on a hosted build service from a signed tag of VCS-106, never on a personal computer.
+The project MUST publish the provenance with the release.
+At Build Level 2, a hosted service produces and signs the provenance, so nobody can alter it unseen.
+Build Level 3 adds builds that cannot affect each other, and signing keys that the build itself cannot reach.
+
+[[SEC-036]]
+*SEC-036.* Each release artifact MUST carry a signature, or appear with its hash in a signed list of the release.
+The project MUST publish how to check the signature and the identity of the signer.
+The tag of the release follows VCS-106, which requires a signature.
+A user can then check that an artifact comes from the project and that nobody changed it.
+Tools such as link:https://www.sigstore.dev/[Sigstore] or the artifact attestations of the forge appear only as examples.
+
+== Reproducible builds
+
+[[SEC-037]]
+*SEC-037.* A project SHOULD make its builds reproducible.
+The same source, environment and steps then give the same artifacts, bit for bit, whoever runs the build.
+A project SHOULD record the build environment of each release, and SHOULD state each known source of difference.
+Anyone can then rebuild a release and compare it with the published artifact.
+
+== References
+
+=== Normative
+
+* link:https://cyclonedx.org/specification/overview/[CycloneDX Specification], OWASP Foundation and Ecma International, 1.7, 2025-10-21. link:https://web.archive.org/web/20261028152500/https://cyclonedx.org/specification/overview/[Archived copy]
+* link:https://ecma-international.org/publications-and-standards/standards/ecma-424/[ECMA-424, CycloneDX Bill of Materials Specification], Ecma International, 2nd edition, 2025-12. link:https://web.archive.org/web/20261020004016/https://ecma-international.org/publications-and-standards/standards/ecma-424/[Archived copy]
+* link:https://slsa.dev/spec/v1.2/[Supply-chain Levels for Software Artifacts (SLSA)], Open Source Security Foundation, v1.2, 2025-11-24. link:https://web.archive.org/web/20261101232923/https://slsa.dev/spec/v1.2/[Archived copy]
+
+=== Informative
+
+* link:https://spdx.github.io/spdx-spec/v3.0.1/[The System Package Data Exchange (SPDX) Specification], The Linux Foundation, 3.0.1, 2024-12-17. link:https://web.archive.org/web/20260816180048/https://spdx.github.io/spdx-spec/v3.0.1/[Archived copy]
+* link:https://www.sigstore.dev/[Sigstore], Open Source Security Foundation, 2026-11-08. link:https://web.archive.org/web/20261106101622/https://www.sigstore.dev/[Archived copy]
+
+== Document history
+
+[cols="1,1,4",options="header"]
+|===
+|Version |Date |Change
+|0.1.0 |2026-11-08 |First version.
+|===

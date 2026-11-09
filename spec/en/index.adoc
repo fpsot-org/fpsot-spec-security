@@ -1,8 +1,42 @@
 = FPSOT security specification
 include::_fpsot-terms.adoc[]
 
-Replace this page with the normative text of the specification.
-Start with the scope, then the conformance classes, then the requirements.
+This specification sets how the projects of the {abbr-fpsot-first} build, release and maintain their software and their specifications securely.
+It also sets how a person reports a {term-vulnerability}, and how {abbr-fpsot} fixes and discloses it.
+
+The rules name capabilities, not products.
+They require no vendor tool and no paid service.
+Tools appear only as examples.
+
+The rules come in nine parts, and one informative page follows them.
+
+* xref:development.adoc[Secure development] profiles a framework of the {abbr-nist-first}.
+It also sets the threat model and the security requirements of each product.
+* xref:code-review.adoc[Code, review and analysis] sets the second review of security-relevant changes, and the analysis that runs on each pull request.
+* xref:secrets.adoc[Secrets] keeps secrets out of repositories and images, and sets their rotation.
+* xref:supply-chain.adoc[Supply chain] pins dependencies and actions, and sets the bill of materials, the provenance and the signature of each release.
+* xref:reporting.adoc[Reporting and handling vulnerabilities] sets the private channel, the times, the severity score, the identifiers and the advisories.
+* xref:disclosure.adoc[Pre-notice and disclosure] sets the list of adopters that learn of a fix first.
+It also sets the head start and the public release.
+* xref:releases.adoc[Supported versions and security files] sets the supported versions, the end of support and the `SECURITY.md` file.
+* xref:specifications.adoc[Flaws in specifications] sets how people report and fix a flaw in a specification.
+* xref:security-tests.adoc[Security tests] ties the security tests to the testing specification.
+* xref:legal-context.adoc[Laws and deadlines of recipients] is informative, and sums up the laws that touch on these rules.
+
+== Related specifications
+
+This specification builds on other {abbr-fpsot} specifications.
+The version control specification sets the signed commits and tags and the protected branches.
+The documentation specification sets the diagrams as code that a threat model uses.
+The {abbr-api-first} design specification sets the security rules of each {abbr-api}, which the security tests check.
+The testing specification sets the test levels and the required checks that run the security tests.
+
+The future {abbr-fpsot} specifications on code and on capabilities will add the tools and settings of each language.
+
+== Template
+
+The file `examples/SECURITY.md` is a template that a repository copies.
+It holds the policy in English and in French, and it meets SEC-063.
 
 == Conformance
 
@@ -11,35 +45,53 @@ ____
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 (link:https://www.rfc-editor.org/info/rfc2119[RFC 2119], link:https://www.rfc-editor.org/info/rfc8174[RFC 8174]) when, and only when, they appear in all capitals, as shown here.
 ____
 
-The keywords follow requirement WRT-010 of the {abbr-fpsot-first} writing specification.
+The keywords follow requirement WRT-010 of the {abbr-fpsot} writing specification.
 The French version uses the French keywords of WRT-011.
 
-== Requirements
+The rules address three parties.
+A project conforms when its repositories, builds and releases meet every MUST rule that applies to them.
+The {abbr-fpsot} security team conforms when it handles each report under SEC-040 to SEC-073.
+A member of the pre-notice list accepts SEC-057 and SEC-058 as the terms of its membership.
 
-Give each requirement an anchor line with its ID, directly above its paragraph.
-The anchor looks like `+[[XYZ-001]]+`.
-The example below shows the form. Replace it with the first requirement.
+The specification states the practice of {abbr-fpsot}, and it is not legal advice.
+Points that need a lawyer sit in informative notes, never in a rule.
 
-[[TPL-001]]
-*TPL-001.* A normative statement MUST use one of the {abbr-bcp-first} 14 keywords in capitals.
-The keyword gives the rule its strength.
+== Standards
+
+The rules summarize outside standards in their own words and take no text from them.
+They cite these versions:
+
+* link:https://csrc.nist.gov/pubs/sp/800/218/final[NIST SP 800-218] version 1.1, since version 1.2 is still a draft;
+* link:https://asvs.owasp.org/[OWASP ASVS 5.0.0];
+* link:https://www.first.org/cvss/v4.0/specification-document[CVSS v4.0];
+* link:https://slsa.dev/spec/v1.2/[SLSA v1.2];
+* link:https://cyclonedx.org/specification/overview/[CycloneDX 1.7], with link:https://spdx.github.io/spdx-spec/v3.0.1/[SPDX 3.0.1] as an option.
+
+This specification cites two standards on vulnerability disclosure by title only, because their text is not free to read.
+They are link:https://www.iso.org/standard/72311.html[ISO/IEC 29147:2018, Vulnerability disclosure] and link:https://www.iso.org/standard/69725.html[ISO/IEC 30111:2019, Vulnerability handling processes].
 
 == References
-
-List here each outside source that this page cites, with the same address as its link in the text.
-Each entry gives the title, publisher, version, date and an archived copy.
 
 === Normative
 
 * link:https://www.rfc-editor.org/info/rfc2119[RFC 2119, Key words for use in RFCs to Indicate Requirement Levels], IETF, BCP 14, 1997-03. link:https://web.archive.org/web/20261103005705/https://www.rfc-editor.org/info/rfc2119/[Archived copy]
 * link:https://www.rfc-editor.org/info/rfc8174[RFC 8174, Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words], IETF, BCP 14, 2017-05. link:https://web.archive.org/web/20261103005743/https://www.rfc-editor.org/info/rfc8174/[Archived copy]
+* link:https://csrc.nist.gov/pubs/sp/800/218/final[NIST SP 800-218, Secure Software Development Framework (SSDF) Version 1.1: Recommendations for Mitigating the Risk of Software Vulnerabilities], NIST, version 1.1, 2022-02. link:https://web.archive.org/web/20261106220457/https://csrc.nist.gov/pubs/sp/800/218/final[Archived copy]
+* link:https://asvs.owasp.org/[OWASP Application Security Verification Standard], OWASP Foundation, 5.0.0, 2025-05-30. link:https://web.archive.org/web/20261101232652/https://asvs.owasp.org/[Archived copy]
+* link:https://www.first.org/cvss/v4.0/specification-document[Common Vulnerability Scoring System v4.0: Specification Document], FIRST, 4.0, document version 1.2, 2024-06-18. link:https://web.archive.org/web/20261026064457/https://www.first.org/cvss/v4.0/specification-document[Archived copy]
+* link:https://slsa.dev/spec/v1.2/[Supply-chain Levels for Software Artifacts (SLSA)], Open Source Security Foundation, v1.2, 2025-11-24. link:https://web.archive.org/web/20261101232923/https://slsa.dev/spec/v1.2/[Archived copy]
+* link:https://cyclonedx.org/specification/overview/[CycloneDX Specification], OWASP Foundation and Ecma International, 1.7, 2025-10-21. link:https://web.archive.org/web/20261028152500/https://cyclonedx.org/specification/overview/[Archived copy]
+
+=== Informative
+
+* link:https://spdx.github.io/spdx-spec/v3.0.1/[The System Package Data Exchange (SPDX) Specification], The Linux Foundation, 3.0.1, 2024-12-17. link:https://web.archive.org/web/20260816180048/https://spdx.github.io/spdx-spec/v3.0.1/[Archived copy]
+* link:https://www.iso.org/standard/72311.html[ISO/IEC 29147:2018, Information technology, Security techniques, Vulnerability disclosure], ISO and IEC, edition 2, 2018-10. link:https://web.archive.org/web/20261028011301/https://www.iso.org/standard/72311.html[Archived copy]
+* link:https://www.iso.org/standard/69725.html[ISO/IEC 30111:2019, Information technology, Security techniques, Vulnerability handling processes], ISO and IEC, edition 2, 2019-10. link:https://web.archive.org/web/20261022054235/https://www.iso.org/standard/69725.html[Archived copy]
 
 == Document history
-
-Add one row for each version that changes this page.
 
 [cols="1,1,4",options="header"]
 |===
 |Version |Date |Change
-|0.1.0 |2026-11-03 |First version.
+|0.1.0 |2026-11-08 |First version.
 |===

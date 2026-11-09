@@ -1,0 +1,42 @@
+= Tests de sécurité
+include::_fpsot-terms.adoc[]
+
+Ces règles nomment les tests de sécurité d’un projet de la {abbr-fpsot-first} et les relient à la spécification des tests.
+Chaque test de sécurité appartient à un niveau de test de TST-001, et suit les règles de cette spécification.
+
+[[SEC-080]]
+*SEC-080.* Les vérifications de SEC-012, de SEC-013 et de SEC-014 DOIVENT être des vérifications obligatoires des branches protégées, selon TST-060.
+Une vérification qui échoue DOIT bloquer la fusion, selon TST-061.
+Une vérification de sécurité qui ne bloque pas une fusion ne protège rien.
+
+[[SEC-081]]
+*SEC-081.* Chaque produit doté d’une {abbr-api-first} DOIT exécuter un balayage dynamique sur une construction en marche avant chaque version.
+Le balayage DOIT employer la description publiée de l’{abbr-api}, selon API-021, pour atteindre chaque opération.
+Il DOIT viser l’artefact construit, comme TST-065 l’exige pour les tests fonctionnels.
+Son environnement de test DOIT contenir seulement des données synthétiques.
+Un constat de gravité élevée ou critique DOIT bloquer la version, sauf exception consignée selon SEC-016.
+Un balayage dynamique trouve des failles qui n’apparaissent que lorsque les parties fonctionnent ensemble, comme une vérification manquante.
+
+[[SEC-082]]
+*SEC-082.* Les tests fonctionnels ou de contrat d’un produit doté d’une {abbr-api} DOIVENT vérifier les règles de conception d’{abbr-api}.
+Ils couvrent chaque règle que le produit doit respecter, dont API-080 à API-083 et API-092.
+Un test DEVRAIT prouver qu’un appelant ne peut pas agir sur un élément d’un autre appelant.
+Une règle sans test peut se briser dans n’importe quelle version sans que personne le remarque.
+
+[[SEC-083]]
+*SEC-083.* Le test d’une {term-vulnerability} corrigée, selon SEC-047, NE DOIT PAS atteindre un dépôt public avant la publication.
+Il DOIT être fusionné avec la correction, ou après elle.
+Un test public d’une faille non corrigée montre aux attaquants exactement comment l’exploiter.
+
+[[SEC-084]]
+*SEC-084.* Les tests de sécurité DOIVENT employer seulement des données synthétiques et des justificatifs de test, selon TST-050.
+Un justificatif de test NE DOIT PAS donner accès à un système hors de l’exécution du test.
+Un test de sécurité a souvent besoin d’un mot de passe ou d’une clé, et un vrai justificatif enfreindrait SEC-020.
+
+== Historique du document
+
+[cols="1,1,4",options="header"]
+|===
+|Version |Date |Changement
+|0.1.0 |2026-11-08 |Première version.
+|===

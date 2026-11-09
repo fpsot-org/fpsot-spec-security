@@ -1,0 +1,103 @@
+= Signalement et traitement des vulnérabilités
+include::_fpsot-terms.adoc[]
+
+Ces règles fixent comment une personne signale une {term-vulnerability} dans un projet de la {abbr-fpsot-first}.
+Elles fixent aussi comment le projet traite le signalement.
+Le xref:disclosure.adoc[préavis et la divulgation] fixent qui l’apprend, et quand.
+
+== Les signalements restent hors des groupes de travail
+
+Chaque dépôt de spécification de {abbr-fpsot} contient le link:https://github.com/CommunitySpecification/Community_Specification/blob/8a05e46d768ac0525af882b619c42f3380a9e869/GOVERNANCE.md[fichier de gouvernance de la Community Specification 1.0].
+Sa section 5 rend non confidentielle toute information transmise dans le cadre des activités d’un groupe de travail.
+Cela vise les réunions, les contributions et les soumissions, quelles que soient leurs mentions.
+Un signalement envoyé à un groupe de travail serait donc public dès son arrivée.
+Les règles ci-dessous gardent donc chaque signalement hors des activités des groupes de travail.
+
+[[SEC-040]]
+*SEC-040.* Chaque dépôt DOIT offrir un canal privé pour signaler une {term-vulnerability}, comme la fonction de signalement de sa forge.
+Le canal DOIT livrer chaque signalement seulement aux personnes-ressources de SEC-002 et à l’équipe de sécurité.
+La fondation DOIT aussi offrir un second canal privé pour les personnes sans compte, comme une adresse courriel chiffrée.
+Un signalement NE DOIT PAS passer par un groupe de travail ni par un billet public.
+Il NE DOIT PAS non plus passer par une liste de diffusion ou une réunion.
+Un canal privé permet au projet de corriger la faille avant que des attaquants l’apprennent.
+
+[[SEC-041]]
+*SEC-041.* Un ou une responsable qui trouve un signalement en public DOIT le masquer ou le retirer immédiatement, si possible.
+Cette personne DOIT ensuite demander à l’auteur du signalement d’employer le canal privé, et DOIT prévenir l’équipe de sécurité.
+L’équipe de sécurité DOIT traiter cette {term-vulnerability} comme peut-être publique, selon SEC-055.
+Un signalement que tout le monde pouvait lire est peut-être déjà entre les mains d’un attaquant.
+
+[[SEC-042]]
+*SEC-042.* {abbr-fpsot} DOIT avoir une équipe de sécurité qui traite chaque signalement hors des activités des groupes de travail.
+L’équipe DOIT compter au moins trois membres, et la fondation DOIT publier leurs rôles et la façon de les joindre.
+Chaque membre DOIT s’engager par écrit à garder confidentiels les signalements et les corrections jusqu’à leur publication.
+L’équipe décide de la gravité, des dates du préavis et de la publication, et de toute publication anticipée.
+Une petite équipe connue, tenue à la confidentialité, rend le traitement privé possible.
+
+== Délais
+
+[[SEC-043]]
+*SEC-043.* L’équipe de sécurité DOIT accuser réception de chaque signalement dans un délai de 3 jours ouvrables.
+Dans un délai de 10 jours ouvrables, elle DOIT dire si elle accepte le signalement, et avec quelle gravité.
+Elle DEVRAIT ensuite l’informer de ses progrès au moins tous les 14 jours, jusqu’à la publication.
+Une personne sans nouvelles peut publier plus tôt, et des réponses rapides la gardent en contact avec le projet.
+
+== Gravité
+
+[[SEC-044]]
+*SEC-044.* L’équipe de sécurité DOIT coter chaque {term-vulnerability} acceptée avec le link:https://www.first.org/cvss/v4.0/specification-document[CVSS v4.0].
+Elle DOIT consigner la chaîne vectorielle complète, qui commence par `CVSS:4.0/`, et la cote de gravité qui en découle.
+Elle DOIT publier la cote de base avec la désignation `CVSS-B`, que la norme définit.
+Elle PEUT ajouter les métriques de menace quand elle connaît une exploitation, avec la désignation `CVSS-BT`.
+Elle NE DOIT PAS employer une version antérieure du {abbr-cvss-first} pour une nouvelle {term-vulnerability}.
+Les organisations comparent les cotes d’un produit à l’autre, ce qui exige une seule version et le vecteur complet.
+
+== Identifiants et avis
+
+[[SEC-045]]
+*SEC-045.* L’équipe de sécurité DOIT obtenir un identifiant {abbr-cve-first} pour chaque {term-vulnerability} qu’elle corrige dans un logiciel.
+Elle l’obtient d’une autorité de numérotation {abbr-cve}, comme celle de la forge ou celle d’un organisme qui couvre le produit.
+Chaque faille qu’on peut corriger séparément DOIT recevoir son propre identifiant.
+Les link:https://www.cve.org/ResourcesSupport/AllResources/CNARules[CNA Operational Rules] l’exigent.
+Avec un identifiant {abbr-cve}, chaque outil et chaque organisation suivent la même faille sous un seul nom.
+
+[[SEC-046]]
+*SEC-046.* L’équipe de sécurité DOIT publier un avis de sécurité pour chaque {term-vulnerability} corrigée, au moment de sa publication.
+L’avis DOIT suivre le link:https://ossf.github.io/osv-schema/[schéma OSV], et DOIT aussi figurer dans la base d’avis de la forge.
+Il DOIT donner l’identifiant {abbr-cve}, les versions touchées et corrigées, le vecteur {abbr-cvss} et une description.
+Il DOIT aussi donner toute solution de contournement, et les dates du signalement, du préavis et de la publication.
+Il DOIT mentionner la personne qui a fait le signalement, sous le nom de son choix, sauf si elle refuse.
+Les machines lisent le format {abbr-osv-first} : les outils de balayage peuvent alerter chaque organisation qui exécute une version touchée.
+
+== Après la correction
+
+[[SEC-047]]
+*SEC-047.* Le projet DOIT ajouter un test qui échoue sur la faille et réussit sur la correction, selon SEC-083.
+L’équipe DOIT chercher la cause profonde, et la même faille ailleurs dans son code.
+Elle DEVRAIT consigner ce qu’elle change à son processus pour éviter une récidive.
+Corriger un seul cas laisse les autres en place si personne ne cherche la cause.
+
+[[SEC-048]]
+*SEC-048.* L’équipe de sécurité DOIT tenir un registre privé de chaque signalement, avec la date de chaque étape.
+Le registre DOIT contenir chaque décision avec sa raison.
+Elle DOIT garder ce registre au moins 5 ans après la publication.
+Un registre montre que chaque signalement a reçu le même traitement.
+Il répond aussi aux questions des organisations et des vérificateurs.
+
+== Références
+
+=== Références normatives
+
+* link:https://github.com/CommunitySpecification/Community_Specification/blob/8a05e46d768ac0525af882b619c42f3380a9e869/GOVERNANCE.md[Community Specification 1.0, GOVERNANCE.md], Community Specification, 1.0, commit 8a05e46d768ac0525af882b619c42f3380a9e869. link:https://github.com/CommunitySpecification/Community_Specification/blob/8a05e46d768ac0525af882b619c42f3380a9e869/GOVERNANCE.md[Copie archivée]
+
+* link:https://www.first.org/cvss/v4.0/specification-document[Common Vulnerability Scoring System v4.0: Specification Document], FIRST, 4.0, document version 1.2, 2024-06-18. link:https://web.archive.org/web/20261026064457/https://www.first.org/cvss/v4.0/specification-document[Copie archivée]
+* link:https://www.cve.org/ResourcesSupport/AllResources/CNARules[CVE Numbering Authority (CNA) Operational Rules], CVE Program, version 4.2.1, 2026-10-20. link:https://web.archive.org/web/20261026054457/https://www.cve.org/ResourcesSupport/AllResources/CNARules[Copie archivée]
+* link:https://ossf.github.io/osv-schema/[Open Source Vulnerability format], Open Source Security Foundation, version 1.9.2, 2026-10-13. link:https://web.archive.org/web/20261023001718/https://ossf.github.io/osv-schema/[Copie archivée]
+
+== Historique du document
+
+[cols="1,1,4",options="header"]
+|===
+|Version |Date |Changement
+|0.1.0 |2026-11-08 |Première version.
+|===

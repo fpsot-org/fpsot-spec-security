@@ -1,0 +1,18 @@
+code: CA-QC
+name: {en: Québec, fr: Québec}
+rows:
+  - id: SEC-001
+    text: {en: "The directive asks public bodies to manage information security and to follow practices recognized in Québec and abroad. It sets no rule on secure development, and leaves the measures to the government chief information security officer.", fr: "La directive demande aux organismes publics de gérer la sécurité de l’information et de suivre des pratiques reconnues au Québec et ailleurs. Elle ne fixe aucune règle sur le développement sécuritaire, et laisse les mesures au chef gouvernemental de la sécurité de l’information."}
+    status: not-covered
+    source: {title: "Gouvernement du Québec, Directive gouvernementale sur la sécurité de l’information", version: "Décret 1514-2021", date: "2021-12-08", url: "https://cdn-contenu.quebec.ca/cdn-contenu/adm/min/cybersecurite_numerique/Publications/DIR_securite_information_2021.pdf", archive: "https://web.archive.org/web/20251113112358/https://cdn-contenu.quebec.ca/cdn-contenu/adm/min/cybersecurite_numerique/Publications/DIR_securite_information_2021.pdf"}
+    last_checked: "2026-11-08"
+  - id: SEC-040
+    text: {en: "The government runs a platform where anyone can report a vulnerability in the systems of ministries and public bodies, through a form. It covers the systems of the government, not the software of suppliers.", fr: "Le gouvernement offre une plateforme où toute personne peut signaler, au moyen d’un formulaire, une vulnérabilité dans les systèmes des ministères et des organismes publics. Elle vise les systèmes du gouvernement, et non les logiciels des fournisseurs."}
+    status: not-covered
+    source: {title: "Centre gouvernemental de cyberdéfense, Signalement de vulnérabilités", url: "https://www.cyber.gouv.qc.ca/signalements/signalement-vulnerabilites", archive: "https://web.archive.org/web/20260114112158/https://www.cyber.gouv.qc.ca/signalements/signalement-vulnerabilites"}
+    last_checked: "2026-11-08"
+  - id: SEC-055
+    text: {en: "A person who reports a vulnerability must ask the Centre gouvernemental de cyberdéfense for permission before making it public. The conditions set no deadline for that permission, while FPSOT publishes within 90 days.", fr: "La personne qui signale une vulnérabilité doit demander l’autorisation du Centre gouvernemental de cyberdéfense avant de la rendre publique. Les conditions ne fixent aucun délai pour cette autorisation, alors que FPSOT publie dans les 90 jours."}
+    status: looser
+    source: {title: "Centre gouvernemental de cyberdéfense, Signalement de vulnérabilités, Conditions d’utilisation", url: "https://www.cyber.gouv.qc.ca/signalements/conditions-utilisation", archive: "https://web.archive.org/web/20260213003332/https://www.cyber.gouv.qc.ca/signalements/conditions-utilisation"}
+    last_checked: "2026-11-08"

@@ -1,0 +1,58 @@
+code: CA
+name: {en: Canada, fr: Canada}
+rows:
+  - id: SEC-001
+    text: {en: "The catalog asks for a documented development process that addresses security and privacy requirements, and names its standards and tools. It does not profile the SSDF, and each organization chooses whether to select the control.", fr: "Le catalogue demande un processus de développement documenté qui traite des exigences de sécurité et de confidentialité, et qui nomme ses normes et ses outils. Il ne présente aucun profil du SSDF, et chaque organisation choisit de retenir ou non la mesure."}
+    status: looser
+    source: {title: "Canadian Centre for Cyber Security, Security and privacy controls and assurance activities catalogue (ITSP.10.033), control SA-15", version: "Revision 1", date: "2026-03-31", url: "https://www.cyber.gc.ca/sites/default/files/itsp.10.033-e.pdf", archive: "https://web.archive.org/web/20260418002828/https://www.cyber.gc.ca/sites/default/files/itsp.10.033-e.pdf"}
+    last_checked: "2026-11-08"
+  - id: SEC-003
+    text: {en: "An enhancement of the catalog asks the developer to perform threat modeling and vulnerability analyses during development and testing. Each organization chooses whether to select it, and it does not require a record in the repository or a yearly review.", fr: "Une amélioration du catalogue demande au développeur d’effectuer une modélisation des menaces et des analyses de vulnérabilité pendant le développement et les essais. Chaque organisation choisit de la retenir ou non, et elle n’exige ni consignation dans le dépôt ni revue annuelle."}
+    status: looser
+    source: {title: "Canadian Centre for Cyber Security, Security and privacy controls and assurance activities catalogue (ITSP.10.033), control SA-11(02)", version: "Revision 1", date: "2026-03-31", url: "https://www.cyber.gc.ca/sites/default/files/itsp.10.033-e.pdf", archive: "https://web.archive.org/web/20260418002828/https://www.cyber.gc.ca/sites/default/files/itsp.10.033-e.pdf"}
+    last_checked: "2026-11-08"
+  - id: SEC-010
+    text: {en: "The guidance says that code reviews raise the odds of catching flaws and committed secrets. It does not require a second person to approve a change.", fr: "Le guide dit que les revues de code augmentent les chances de repérer les failles et les secrets versés. Il n’exige pas qu’une deuxième personne approuve un changement."}
+    status: looser
+    source: {title: "Government of Canada, Publishing Open Source Code, Open Source Software Requirements and Guidance (draft)", date: "2026-08-11", url: "https://github.com/canada-ca/open-source-logiciel-libre/blob/master/en/guides/publishing-open-source-code.md", archive: "https://github.com/canada-ca/open-source-logiciel-libre/blob/6e5a41a24268e99103bd470738fe7b0ff38348d8/en/guides/publishing-open-source-code.md#L55"}
+    last_checked: "2026-11-08"
+  - id: SEC-012
+    text: {en: "An enhancement of the catalog asks the developer to use static code analysis tools and to document the results. It does not make the analysis a check that blocks a change, and each organization chooses whether to select it.", fr: "Une amélioration du catalogue demande au développeur d’employer des outils d’analyse statique du code et de documenter les résultats. Elle ne fait pas de l’analyse une vérification qui bloque un changement, et chaque organisation choisit de la retenir ou non."}
+    status: looser
+    source: {title: "Canadian Centre for Cyber Security, Security and privacy controls and assurance activities catalogue (ITSP.10.033), control SA-11(01)", version: "Revision 1", date: "2026-03-31", url: "https://www.cyber.gc.ca/sites/default/files/itsp.10.033-e.pdf", archive: "https://web.archive.org/web/20260418002828/https://www.cyber.gc.ca/sites/default/files/itsp.10.033-e.pdf"}
+    last_checked: "2026-11-08"
+  - id: SEC-020
+    text: {en: "The catalog forbids unencrypted static authenticators in applications and in other static storage. It allows encrypted ones, while FPSOT forbids every secret in repositories and images.", fr: "Le catalogue interdit les authentifiants statiques non chiffrés dans les applications et dans tout autre stockage statique. Il permet ceux qui sont chiffrés, alors que FPSOT interdit tout secret dans les dépôts et les images."}
+    status: looser
+    source: {title: "Canadian Centre for Cyber Security, Security and privacy controls and assurance activities catalogue (ITSP.10.033), control IA-05(07)", version: "Revision 1", date: "2026-03-31", url: "https://www.cyber.gc.ca/sites/default/files/itsp.10.033-e.pdf", archive: "https://web.archive.org/web/20260418002828/https://www.cyber.gc.ca/sites/default/files/itsp.10.033-e.pdf"}
+    last_checked: "2026-11-08"
+  - id: SEC-033
+    text: {en: "Departments must keep an SBOM for the software they develop that supports critical services, following the minimum elements that the Cyber Centre endorses. The direction names no format, and does not cover each release.", fr: "Les ministères doivent tenir une nomenclature logicielle pour les logiciels qu’ils développent et qui soutiennent des services essentiels, selon les éléments minimaux qu’appuie le Centre pour la cybersécurité. La directive ne nomme aucun format et ne vise pas chaque version."}
+    status: looser
+    source: {title: "Treasury Board of Canada Secretariat, Direction on Government of Canada cyber security readiness in the frontier artificial intelligence era", date: "2026-10-01", url: "https://www.canada.ca/en/government/system/digital-government/policies-standards/spin/direction-government-canada-cyber-security-readiness-frontier-artificial-intelligence-era.html", archive: "https://web.archive.org/web/20261011005842/https://www.canada.ca/en/government/system/digital-government/policies-standards/spin/direction-government-canada-cyber-security-readiness-frontier-artificial-intelligence-era.html"}
+    last_checked: "2026-11-08"
+  - id: SEC-035
+    text: {en: "The catalog asks an organization to document, monitor and keep valid provenance for the systems and components it names. It sets no level of assurance for the provenance of a build.", fr: "Le catalogue demande à une organisation de documenter, de surveiller et de tenir à jour une provenance valide pour les systèmes et les composants qu’elle nomme. Il ne fixe aucun niveau d’assurance pour la provenance d’un build."}
+    status: looser
+    source: {title: "Canadian Centre for Cyber Security, Security and privacy controls and assurance activities catalogue (ITSP.10.033), control SR-04", version: "Revision 1", date: "2026-03-31", url: "https://www.cyber.gc.ca/sites/default/files/itsp.10.033-e.pdf", archive: "https://web.archive.org/web/20260418002828/https://www.cyber.gc.ca/sites/default/files/itsp.10.033-e.pdf"}
+    last_checked: "2026-11-08"
+  - id: SEC-040
+    text: {en: "An enhancement of the catalog asks for a public reporting channel that anyone can find, and for permission to do research in good faith. Each organization chooses whether to select it. It does not keep reports out of any group.", fr: "Une amélioration du catalogue demande un canal de signalement public que chacun peut trouver, et l’autorisation de faire de la recherche de bonne foi. Chaque organisation choisit de la retenir ou non. Elle ne tient les signalements à l’écart d’aucun groupe."}
+    status: looser
+    source: {title: "Canadian Centre for Cyber Security, Security and privacy controls and assurance activities catalogue (ITSP.10.033), control RA-05(11)", version: "Revision 1", date: "2026-03-31", url: "https://www.cyber.gc.ca/sites/default/files/itsp.10.033-e.pdf", archive: "https://web.archive.org/web/20260418002828/https://www.cyber.gc.ca/sites/default/files/itsp.10.033-e.pdf"}
+    last_checked: "2026-11-08"
+  - id: SEC-054
+    text: {en: "The direction asks departments to triage each high or critical alert of a vendor within 10 business days, with a documented response. It says nothing on a private head start from a vendor.", fr: "La directive demande aux ministères de trier chaque alerte élevée ou critique d’un fournisseur dans un délai de 10 jours ouvrables, avec une réponse documentée. Elle ne dit rien d’une avance privée accordée par un fournisseur."}
+    status: not-covered
+    source: {title: "Treasury Board of Canada Secretariat, Direction on Government of Canada cyber security readiness in the frontier artificial intelligence era", date: "2026-10-01", url: "https://www.canada.ca/en/government/system/digital-government/policies-standards/spin/direction-government-canada-cyber-security-readiness-frontier-artificial-intelligence-era.html", archive: "https://web.archive.org/web/20261011005842/https://www.canada.ca/en/government/system/digital-government/policies-standards/spin/direction-government-canada-cyber-security-readiness-frontier-artificial-intelligence-era.html"}
+    last_checked: "2026-11-08"
+  - id: SEC-055
+    text: {en: "The catalog says that an organization should not demand that a researcher stay silent forever, but may ask for a time to fix. It sets no maximum time before public release.", fr: "Le catalogue dit qu’une organisation ne devrait pas exiger d’une personne qui fait de la recherche qu’elle se taise indéfiniment, mais qu’elle peut demander un délai pour corriger. Il ne fixe aucun délai maximal avant la publication."}
+    status: looser
+    source: {title: "Canadian Centre for Cyber Security, Security and privacy controls and assurance activities catalogue (ITSP.10.033), control RA-05(11)", version: "Revision 1", date: "2026-03-31", url: "https://www.cyber.gc.ca/sites/default/files/itsp.10.033-e.pdf", archive: "https://web.archive.org/web/20260418002828/https://www.cyber.gc.ca/sites/default/files/itsp.10.033-e.pdf"}
+    last_checked: "2026-11-08"
+  - id: SEC-063
+    text: {en: "The guidance recommends a SECURITY.md file that explains the security policy and how to report a vulnerability. It sets no content beyond that, and asks for no French version.", fr: "Le guide recommande un fichier SECURITY.md qui explique la politique de sécurité et la façon de signaler une vulnérabilité. Il ne fixe aucun autre contenu et ne demande aucune version française."}
+    status: looser
+    source: {title: "Government of Canada, Publishing Open Source Code, Open Source Software Requirements and Guidance (draft)", date: "2026-08-11", url: "https://github.com/canada-ca/open-source-logiciel-libre/blob/master/en/guides/publishing-open-source-code.md", archive: "https://github.com/canada-ca/open-source-logiciel-libre/blob/6e5a41a24268e99103bd470738fe7b0ff38348d8/en/guides/publishing-open-source-code.md#L222"}
+    last_checked: "2026-11-08"

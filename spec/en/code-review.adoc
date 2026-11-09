@@ -1,0 +1,78 @@
+= Code, review and analysis
+include::_fpsot-terms.adoc[]
+
+These rules set how an {abbr-fpsot-first} project reviews and analyzes each change before it merges.
+They add to the protected branches of the version control specification.
+
+== Review
+
+A security-relevant change is a change to one of these parts of a repository:
+
+* the code that checks identity, access or input;
+* the code that uses cryptography, secrets or personal information;
+* the dependency manifests and lock files;
+* the build files, the {abbr-ci-first} workflows and the release scripts;
+* the `SECURITY.md` file, the threat model and the code owners file.
+
+[[SEC-010]]
+*SEC-010.* A security-relevant change MUST have the approval of at least one maintainer other than its author before it merges.
+This rule adds a second person to the pull request that VCS-109 requires.
+Every other change SHOULD have such an approval too.
+A maintainer MUST NOT approve a change that they wrote, even with another account.
+One person can miss a flaw or plant one, and a second person makes both less likely.
+
+[[SEC-011]]
+*SEC-011.* The code owners file of a repository MUST name owners for each security-relevant part.
+The protected branches MUST require the review of a code owner for these parts.
+The repository can then enforce SEC-010 itself, without trust in each reviewer to spot the part.
+
+== Analysis in continuous integration
+
+[[SEC-012]]
+*SEC-012.* {abbr-ci} MUST run a static analysis of the code on every pull request, as a required check.
+A finding of high or critical severity MUST block the merge.
+A team MUST NOT turn a finding off without a recorded reason, under SEC-016.
+Static analysis finds common flaws, such as injection, before a person reviews the change.
+
+[[SEC-013]]
+*SEC-013.* {abbr-ci} MUST scan each pull request for secrets, as a required check.
+It MUST also scan the whole history of the repository at least once a week.
+A push rule under SEC-021 cannot catch a format of secret that it does not yet know.
+The scan of the history catches it later.
+
+[[SEC-014]]
+*SEC-014.* {abbr-ci} MUST check the dependencies of each pull request against a public database of known vulnerabilities.
+It MUST run the same check on the `main` branch at least once a day.
+A known {term-vulnerability} of high or critical severity in a dependency MUST block the merge, unless SEC-016 records an exception.
+Examples of such databases are the OSV database and the GitHub Advisory Database.
+A new {term-vulnerability} can appear in a dependency that did not change, so the daily check finds it.
+
+[[SEC-015]]
+*SEC-015.* A project MUST use a tool that opens pull requests to update its dependencies and {abbr-ci} actions.
+Each such pull request MUST pass the required checks and MUST have the approval of a maintainer before it merges.
+A project MUST NOT merge these updates without a review.
+Examples of such tools are Dependabot and Renovate.
+Fast updates close known vulnerabilities, and a review catches an update that a hostile party took over.
+
+[[SEC-016]]
+*SEC-016.* Each exception to a finding of SEC-012 to SEC-014 MUST record its reason, its owner and its end date.
+The end date MUST NOT fall more than 90 days after the record.
+A maintainer other than the owner MUST approve it, under SEC-010.
+An exception without an end date hides a risk forever.
+
+== Tools
+
+[[SEC-017]]
+*SEC-017.* A project MAY meet these rules with any tool, free or paid, that provides the capability.
+A project MUST NOT require contributors to buy a tool or a service to take part.
+A project SHOULD name in its repository the tools it uses for SEC-012 to SEC-015.
+Each rule names a capability, so a project can change tools without a change to this specification.
+Tools such as CodeQL or Semgrep for analysis, and Gitleaks for secrets, appear only as examples.
+
+== Document history
+
+[cols="1,1,4",options="header"]
+|===
+|Version |Date |Change
+|0.1.0 |2026-11-08 |First version.
+|===

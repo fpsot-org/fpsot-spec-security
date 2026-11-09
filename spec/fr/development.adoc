@@ -1,0 +1,92 @@
+= Développement sécuritaire
+include::_fpsot-terms.adoc[]
+
+Ces règles fixent comment un projet de la {abbr-fpsot-first} intègre la sécurité, de la conception à la sortie.
+Elles présentent un profil du Secure Software Development Framework, version 1.1, du link:https://csrc.nist.gov/pubs/sp/800/218/final[NIST SP 800-218].
+Elles fixent aussi comment un produit énonce ses exigences de sécurité avec l’link:https://asvs.owasp.org/[OWASP ASVS 5.0.0].
+
+== Le profil du SSDF
+
+Le {abbr-ssdf-first} classe ses pratiques en quatre groupes.
+Ils préparent l’organisation, protègent le logiciel, produisent un logiciel bien sécurisé et répondent aux vulnérabilités.
+Le {abbr-ssdf} énonce des résultats, pas des méthodes : chaque utilisateur choisit comment les atteindre.
+Cette spécification fait ce choix pour les projets de {abbr-fpsot}.
+Le tableau associe chaque groupe de pratiques aux règles qui le respectent.
+
+[cols="1,2,2",options="header"]
+|===
+|Groupe |But, en résumé |Règles de cette spécification
+|PO, Prepare the Organization |Définir les exigences de sécurité, les rôles, les outils et les vérifications. |SEC-001 à SEC-006, SEC-010, SEC-012
+|PS, Protect the Software |Protéger le code contre toute altération, permettre de vérifier les versions et garder chaque version avec ses données. |SEC-020 à SEC-024, SEC-033 à SEC-036
+|PW, Produce Well-Secured Software |Concevoir en tenant compte des risques, réutiliser des composants sûrs, revoir, analyser et tester le code. |SEC-003 à SEC-006, SEC-010 à SEC-016, SEC-030 à SEC-032, SEC-080 à SEC-084
+|RV, Respond to Vulnerabilities |Trouver, évaluer et corriger les vulnérabilités, et en trouver les causes profondes. |SEC-040 à SEC-073
+|===
+
+[[SEC-001]]
+*SEC-001.* Chaque projet de {abbr-fpsot} DOIT respecter les pratiques du {abbr-ssdf} 1.1 selon le profil de cette spécification.
+Un projet PEUT aller au-delà de ce profil, avec des mesures plus strictes ou additionnelles.
+Un projet NE DOIT PAS déclarer sa conformité au {abbr-ssdf} lui-même sur la seule base de cette spécification.
+Le {abbr-ssdf} est un cadre de résultats : un profil donne au projet une façon claire de les atteindre.
+Toute tâche du {abbr-ssdf} que ce profil ne couvre pas reste au choix du projet.
+
+[[SEC-002]]
+*SEC-002.* Chaque projet DOIT nommer au moins deux responsables comme personnes-ressources en sécurité.
+Ces personnes DOIVENT pouvoir joindre en privé l’équipe de sécurité de {abbr-fpsot} prévue à SEC-042.
+Elles DOIVENT prendre part à chaque signalement qui touche leur projet.
+Une personne peut s’absenter ou partir, et un signalement doit quand même recevoir une réponse dans les délais de SEC-043.
+
+== Modèles de menaces
+
+Un modèle de menaces décrit ce qu’un produit protège, qui pourrait l’attaquer et comment le produit résiste.
+
+[[SEC-003]]
+*SEC-003.* Chaque produit DOIT avoir un modèle de menaces, gardé en texte dans son dépôt.
+L’équipe DOIT l’écrire avant la première version.
+Elle DOIT le mettre à jour quand un changement modifie une frontière de confiance.
+Par exemple, une nouvelle interface, un nouveau type de données ou un nouveau système externe.
+L’équipe DOIT le revoir au moins une fois par année, et noter la date de la revue dans le fichier.
+Un modèle gardé près du code évolue avec lui, et chaque demande de fusion le montre aux personnes qui révisent.
+
+[[SEC-004]]
+*SEC-004.* Un modèle de menaces DOIT nommer les actifs, les acteurs, les frontières de confiance et les menaces.
+Chaque menace DOIT avoir une réponse : une mesure du produit ou de l’exploitant, ou un risque accepté avec sa raison.
+Une équipe PEUT employer toute méthode, comme STRIDE ou les arbres d’attaque.
+Les auteurs DOIVENT dessiner chaque diagramme du modèle sous forme de code, selon DOC-030.
+L’exploitant sait ainsi quelles mesures lui reviennent, et le lectorat voit pourquoi l’équipe accepte chaque risque.
+
+== Exigences de sécurité
+
+L’{abbr-asvs-first} de l’{abbr-owasp-first} fixe des exigences de sécurité pour les applications, sur trois niveaux.
+Le niveau 1 est le minimum pour toute application.
+Le niveau 2 convient à la plupart des applications qui traitent des données sensibles.
+Le niveau 3 convient aux applications les plus critiques.
+
+[[SEC-005]]
+*SEC-005.* Chaque produit DOIT choisir un niveau de l’{abbr-asvs} 5.0.0 et le consigner dans son dépôt, avec sa raison.
+Un produit DOIT choisir le niveau 2 ou 3 s’il sert le public pour un organisme public.
+Il en va de même s’il traite des renseignements personnels pour un tel organisme.
+Le niveau 2 est alors le niveau par défaut.
+Une bibliothèque ou un outil sans interface utilisateur ni données stockées PEUT choisir le niveau 1.
+Un organisme public attend un niveau d’assurance connu, que le niveau 2 donne à la plupart de ces systèmes.
+
+[[SEC-006]]
+*SEC-006.* Un produit DOIT citer chaque exigence de sécurité par son identifiant de l’{abbr-asvs}, avec la version, comme `v5.0.0-1.2.5`.
+Un produit DOIT consigner chaque exigence de son niveau qu’il ne respecte pas, avec la raison et la mesure compensatoire.
+Un produit NE DOIT PAS copier le texte de l’{abbr-asvs} dans ses propres documents.
+La version dans l’identifiant garde la citation exacte quand l’{abbr-asvs} change.
+Le texte de l’{abbr-asvs} est sous une licence de partage à l’identique, qui s’appliquerait alors à la copie.
+
+== Références
+
+=== Références normatives
+
+* link:https://csrc.nist.gov/pubs/sp/800/218/final[NIST SP 800-218, Secure Software Development Framework (SSDF) Version 1.1: Recommendations for Mitigating the Risk of Software Vulnerabilities], NIST, version 1.1, 2022-02. link:https://web.archive.org/web/20261106220457/https://csrc.nist.gov/pubs/sp/800/218/final[Copie archivée]
+* link:https://asvs.owasp.org/[OWASP Application Security Verification Standard], OWASP Foundation, 5.0.0, 2025-05-30. link:https://web.archive.org/web/20261101232652/https://asvs.owasp.org/[Copie archivée]
+
+== Historique du document
+
+[cols="1,1,4",options="header"]
+|===
+|Version |Date |Changement
+|0.1.0 |2026-11-08 |Première version.
+|===
