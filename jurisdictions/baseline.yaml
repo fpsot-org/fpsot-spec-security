@@ -1,12 +1,139 @@
 # Comparison data. The format is defined by fpsot-spec-doc (model/jurisdiction.yaml).
-# This example row compares requirement TPL-001. Replace it with the rows of this specification.
-# Add one file per jurisdiction, such as ca.yaml or ca/qc.yaml, only when a source exists.
 topics:
-  keywords: {en: Requirement keywords, fr: Mots clés des exigences}
+  secure-development: {en: Secure development framework, fr: Cadre de développement sécuritaire}
+  threat-models: {en: Threat models, fr: Modèles de menaces}
+  security-requirements: {en: Security requirements, fr: Exigences de sécurité}
+  code-review: {en: Review of changes, fr: Revue des changements}
+  code-analysis: {en: Analysis in continuous integration, fr: Analyse dans l’intégration continue}
+  secrets: {en: Secrets, fr: Secrets}
+  pinned-inputs: {en: Pinned inputs, fr: Intrants épinglés}
+  sbom: {en: Software bill of materials, fr: Nomenclature logicielle}
+  provenance: {en: Build provenance and signatures, fr: Provenance des builds et signatures}
+  reporting-channel: {en: Reporting channel and times, fr: Canal de signalement et délais}
+  severity: {en: Severity scores, fr: Cotes de gravité}
+  identifiers-advisories: {en: Identifiers and advisories, fr: Identifiants et avis}
+  pre-notice: {en: Pre-notice to adopters, fr: Préavis aux organisations adoptantes}
+  disclosure-dates: {en: Disclosure dates, fr: Dates de divulgation}
+  security-policy: {en: Security policy file, fr: Fichier de politique de sécurité}
+  security-tests: {en: Security tests, fr: Tests de sécurité}
 rows:
-  - id: TPL-001
-    topic: keywords
-    requirement: {en: Use the BCP 14 keywords., fr: Utiliser les mots clés du BCP 14.}
-    international: {en: "BCP 14 defines MUST, SHOULD and MAY. Only the capital forms carry that meaning.", fr: "Le BCP 14 définit MUST, SHOULD et MAY. Seules les majuscules ont ce sens."}
-    international_source: {title: "RFC 8174, Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words (BCP 14)", version: "BCP 14", date: "2017-05", url: "https://www.rfc-editor.org/info/rfc8174", archive: "https://web.archive.org/web/20261103005743/https://www.rfc-editor.org/info/rfc8174/"}
-    fpsot: {en: "Keywords in capitals, with a fixed French mapping.", fr: "Mots clés en majuscules, avec une correspondance française fixe."}
+  - id: SEC-001
+    topic: secure-development
+    requirement: {en: "Each project meets the SSDF 1.1 practices as the specification profiles them.", fr: "Chaque projet respecte les pratiques du SSDF 1.1 selon le profil de la spécification."}
+    international: {en: "The SSDF groups its practices in four groups: prepare the organization, protect the software, produce well-secured software and respond to vulnerabilities. It states outcomes, not methods. Version 1.2 is still a draft.", fr: "Le SSDF classe ses pratiques en quatre groupes : préparer l’organisation, protéger le logiciel, produire un logiciel bien sécurisé et répondre aux vulnérabilités. Il énonce des résultats, pas des méthodes. La version 1.2 n’est encore qu’une ébauche."}
+    international_source: {title: "NIST SP 800-218, Secure Software Development Framework (SSDF) Version 1.1", version: "1.1", date: "2022-02", url: "https://csrc.nist.gov/pubs/sp/800/218/final", archive: "https://web.archive.org/web/20261106220457/https://csrc.nist.gov/pubs/sp/800/218/final"}
+    fpsot: {en: "A profile of SSDF 1.1 that sets one way to reach each outcome, with no claim of SSDF conformance on this basis alone.", fr: "Un profil du SSDF 1.1 qui fixe une façon d’atteindre chaque résultat, sans déclaration de conformité au SSDF sur cette seule base."}
+  - id: SEC-003
+    topic: threat-models
+    requirement: {en: "Each product keeps a threat model in its repository, reviewed at least once a year.", fr: "Chaque produit garde un modèle de menaces dans son dépôt, revu au moins une fois par année."}
+    international: {en: "Task PW.1.1 of the SSDF asks for risk modeling, such as threat modeling, attack modeling or attack surface mapping, to assess the security risk of the software.", fr: "La tâche PW.1.1 du SSDF demande une modélisation des risques, comme la modélisation des menaces, la modélisation des attaques ou la cartographie de la surface d’attaque, pour évaluer le risque de sécurité du logiciel."}
+    international_source: {title: "NIST SP 800-218, Secure Software Development Framework (SSDF) Version 1.1, task PW.1.1", version: "1.1", date: "2022-02", url: "https://csrc.nist.gov/pubs/sp/800/218/final", archive: "https://web.archive.org/web/20261106220457/https://csrc.nist.gov/pubs/sp/800/218/final"}
+    fpsot: {en: "A text threat model in each product repository, written before the first release, updated when a trust boundary changes and reviewed yearly.", fr: "Un modèle de menaces textuel dans le dépôt de chaque produit, écrit avant la première version, mis à jour quand une frontière de confiance change et revu chaque année."}
+  - id: SEC-005
+    topic: security-requirements
+    requirement: {en: "Each product records its ASVS 5.0.0 level, Level 2 by default for public-sector products.", fr: "Chaque produit consigne son niveau de l’ASVS 5.0.0, le niveau 2 par défaut pour les produits du secteur public."}
+    international: {en: "The ASVS has three levels. It says that most applications should strive for Level 2, but it leaves the choice of level to a risk analysis of each organization.", fr: "L’ASVS compte trois niveaux. Il dit que la plupart des applications devraient viser le niveau 2, mais il laisse le choix du niveau à l’analyse de risque de chaque organisation."}
+    international_source: {title: "OWASP Application Security Verification Standard", version: "5.0.0", date: "2025-05-30", url: "https://asvs.owasp.org/", archive: "https://web.archive.org/web/20261101232652/https://asvs.owasp.org/"}
+    fpsot: {en: "Level 2 or 3 for a product that serves the public or handles personal information, Level 2 by default. Level 1 only for a library or a tool with no user interface and no stored data.", fr: "Niveau 2 ou 3 pour un produit qui sert le public ou traite des renseignements personnels, le niveau 2 par défaut. Le niveau 1 seulement pour une bibliothèque ou un outil sans interface utilisateur ni données stockées."}
+  - id: SEC-010
+    topic: code-review
+    requirement: {en: "A maintainer other than the author approves each security-relevant change.", fr: "Une personne responsable autre que l’auteur approuve chaque changement touchant la sécurité."}
+    international: {en: "Control OSPS-QA-07.01 of the OpenSSF Baseline requires the approval of a person other than the author before a change merges. It applies at maturity level 3 only.", fr: "La mesure OSPS-QA-07.01 de la base de référence de l’OpenSSF exige l’approbation d’une personne autre que l’auteur avant la fusion d’un changement. Elle s’applique seulement au niveau de maturité 3."}
+    international_source: {title: "OpenSSF Open Source Project Security Baseline, OSPS-QA-07.01", version: "v2026.08.28", date: "2026-08-28", url: "https://baseline.openssf.org/versions/2026-08-28", archive: "https://github.com/ossf/security-baseline/blob/a26a7963f6fd098c1e82829322ec9e1196a4f294/baseline/OSPS-QA.yaml#L238"}
+    fpsot: {en: "Required for every security-relevant change, with code owners enforcing it. Recommended for every other change.", fr: "Obligatoire pour chaque changement touchant la sécurité, avec des responsables du code qui l’imposent. Recommandé pour tout autre changement."}
+  - id: SEC-012
+    topic: code-analysis
+    requirement: {en: "Static analysis runs on every pull request, and high or critical findings block the merge.", fr: "Une analyse statique s’exécute à chaque demande de fusion, et les constats élevés ou critiques bloquent la fusion."}
+    international: {en: "Task PW.7.2 of the SSDF asks the producer to review or analyze its code for vulnerabilities, with tools or by hand, and to record and triage the findings.", fr: "La tâche PW.7.2 du SSDF demande au producteur de revoir ou d’analyser son code pour y trouver des vulnérabilités, avec des outils ou à la main, et de consigner et de trier les constats."}
+    international_source: {title: "NIST SP 800-218, Secure Software Development Framework (SSDF) Version 1.1, task PW.7.2", version: "1.1", date: "2022-02", url: "https://csrc.nist.gov/pubs/sp/800/218/final", archive: "https://web.archive.org/web/20261106220457/https://csrc.nist.gov/pubs/sp/800/218/final"}
+    fpsot: {en: "Automated static analysis as a required check of each pull request, with exceptions recorded and limited to 90 days.", fr: "Une analyse statique automatisée comme vérification obligatoire de chaque demande de fusion, avec des exceptions consignées et limitées à 90 jours."}
+  - id: SEC-020
+    topic: secrets
+    requirement: {en: "No secret appears in a repository, an image, a release, a log or an error message.", fr: "Aucun secret ne figure dans un dépôt, une image, une version, un journal ou un message d’erreur."}
+    international: {en: "Control OSPS-BR-07.01 of the OpenSSF Baseline requires a project to prevent the unintended storage of unencrypted secrets in version control.", fr: "La mesure OSPS-BR-07.01 de la base de référence de l’OpenSSF exige qu’un projet empêche le stockage involontaire de secrets non chiffrés dans la gestion des versions."}
+    international_source: {title: "OpenSSF Open Source Project Security Baseline, OSPS-BR-07.01", version: "v2026.08.28", date: "2026-08-28", url: "https://baseline.openssf.org/versions/2026-08-28", archive: "https://github.com/ossf/security-baseline/blob/a26a7963f6fd098c1e82829322ec9e1196a4f294/baseline/OSPS-BR.yaml#L217"}
+    fpsot: {en: "No secret, encrypted or not, in repositories, images, releases or logs. Push-blocking scans, revocation of each leaked secret and yearly rotation.", fr: "Aucun secret, chiffré ou non, dans les dépôts, les images, les versions ou les journaux. Des balayages qui bloquent les poussées, la révocation de chaque secret divulgué et une rotation annuelle."}
+  - id: SEC-031
+    topic: pinned-inputs
+    requirement: {en: "Each outside action is pinned by commit hash, and each image by digest.", fr: "Chaque action externe est épinglée par l’empreinte de son archivage, et chaque image par son condensé."}
+    international: {en: "Control OSPS-BR-05.01 of the OpenSSF Baseline asks build pipelines to use standard tooling to fetch and track dependencies. The Baseline has no control on the pinning of actions.", fr: "La mesure OSPS-BR-05.01 de la base de référence de l’OpenSSF demande aux chaînes de construction d’employer des outils standard pour obtenir et suivre les dépendances. La base de référence n’a aucune mesure sur l’épinglage des actions."}
+    international_source: {title: "OpenSSF Open Source Project Security Baseline, OSPS-BR-05.01", version: "v2026.08.28", date: "2026-08-28", url: "https://baseline.openssf.org/versions/2026-08-28", archive: "https://github.com/ossf/security-baseline/blob/a26a7963f6fd098c1e82829322ec9e1196a4f294/baseline/OSPS-BR.yaml#L173"}
+    fpsot: {en: "Lock files or equivalents that fix every direct and transitive version, with checksums, outside actions pinned by full commit hash and images by digest. FPSOT reusable workflows may use their major tag.", fr: "Des fichiers de verrouillage ou des équivalents qui fixent chaque version directe et transitive, avec des sommes de contrôle, les actions externes épinglées par l’empreinte complète de leur archivage et les images par leur condensé. Les flux de travail réutilisables de FPSOT peuvent employer leur étiquette majeure."}
+  - id: SEC-033
+    topic: sbom
+    requirement: {en: "Each release of a software component includes a CycloneDX SBOM for each artifact.", fr: "Chaque version d’un composant logiciel comprend une nomenclature logicielle CycloneDX pour chaque artefact."}
+    international: {en: "Task PS.3.2 of the SSDF asks the producer to collect, protect, maintain and share provenance data for all components of each release, such as in an SBOM. It names no format.", fr: "La tâche PS.3.2 du SSDF demande au producteur de recueillir, de protéger, de tenir à jour et de transmettre les données de provenance de tous les composants de chaque version, par exemple dans une nomenclature logicielle. Elle ne nomme aucun format."}
+    international_source: {title: "NIST SP 800-218, Secure Software Development Framework (SSDF) Version 1.1, task PS.3.2", version: "1.1", date: "2022-02", url: "https://csrc.nist.gov/pubs/sp/800/218/final", archive: "https://web.archive.org/web/20261106220457/https://csrc.nist.gov/pubs/sp/800/218/final"}
+    fpsot: {en: "CycloneDX 1.7 or a later version of ECMA-424, in JSON, built from the resolved dependencies of the build. CycloneDX 1.6 accepted until 2027-06-30. SPDX 3.0.1 is an option.", fr: "CycloneDX 1.7 ou une version ultérieure d’ECMA-424, en JSON, produit à partir des dépendances résolues de la construction. CycloneDX 1.6 accepté jusqu’au 2027-06-30. SPDX 3.0.1 est permis en option."}
+  - id: SEC-035
+    topic: provenance
+    requirement: {en: "Each artifact of a software component has SLSA Build Level 2 provenance, with Level 3 as the target.", fr: "Chaque artefact d’un composant logiciel a une provenance SLSA du niveau de construction 2, avec le niveau 3 comme cible."}
+    international: {en: "SLSA Build Level 2 requires a hosted build platform that produces and signs the provenance. Level 3 adds isolated builds and provenance that tenants cannot forge.", fr: "Le niveau de construction 2 de SLSA exige une plateforme de construction hébergée qui produit et signe la provenance. Le niveau 3 ajoute des constructions isolées et une provenance que les locataires ne peuvent pas falsifier."}
+    international_source: {title: "SLSA, Build: Requirements for producing artifacts", version: "1.2", date: "2025-11-24", url: "https://slsa.dev/spec/v1.2/build-requirements", archive: "https://web.archive.org/web/20261023005340/https://slsa.dev/spec/v1.2/build-requirements"}
+    fpsot: {en: "Build Level 2 required, Level 3 recommended, from a signed tag on a hosted build service. Each artifact signed, with published steps to verify it. Signatures and provenance of specification books are recommended.", fr: "Le niveau de construction 2 obligatoire et le niveau 3 recommandé, à partir d’une étiquette signée sur un service de construction hébergé. Chaque artefact signé, avec des étapes de vérification publiées. Signatures et provenance des livres de spécification recommandées."}
+  - id: SEC-040
+    topic: reporting-channel
+    requirement: {en: "Each repository offers a private reporting channel, outside any Working Group.", fr: "Chaque dépôt offre un canal de signalement privé, hors de tout groupe de travail."}
+    international: {en: "Control OSPS-VM-03.01 of the OpenSSF Baseline requires a way to report vulnerabilities in private to the security contacts of the project.", fr: "La mesure OSPS-VM-03.01 de la base de référence de l’OpenSSF exige un moyen de signaler des vulnérabilités en privé aux personnes-ressources en sécurité du projet."}
+    international_source: {title: "OpenSSF Open Source Project Security Baseline, OSPS-VM-03.01", version: "v2026.08.28", date: "2026-08-28", url: "https://baseline.openssf.org/versions/2026-08-28", archive: "https://github.com/ossf/security-baseline/blob/a26a7963f6fd098c1e82829322ec9e1196a4f294/baseline/OSPS-VM.yaml#L64"}
+    fpsot: {en: "The private reporting of the forge plus a second private channel for people without an account. Never a Working Group, a public issue or a meeting.", fr: "Le signalement privé de la forge, plus un second canal privé pour les personnes sans compte. Jamais un groupe de travail, un billet public ou une réunion."}
+  - id: SEC-043
+    topic: reporting-channel
+    requirement: {en: "The security team acknowledges a report within 3 business days and assesses it within 10.", fr: "L’équipe de sécurité accuse réception d’un signalement dans un délai de 3 jours ouvrables et l’évalue dans un délai de 10."}
+    international: {en: "The CISA template of a vulnerability disclosure policy commits an agency to acknowledge each report within 3 business days.", fr: "Le modèle de politique de divulgation des vulnérabilités de la CISA engage un organisme à accuser réception de chaque signalement dans un délai de 3 jours ouvrables."}
+    international_source: {title: "CISA, Vulnerability Disclosure Policy Template", url: "https://www.cisa.gov/vulnerability-disclosure-policy-template", archive: "https://web.archive.org/web/20260912080017/https://www.cisa.gov/vulnerability-disclosure-policy-template"}
+    fpsot: {en: "Acknowledgment within 3 business days, a first assessment within 10 business days and progress news at least every 14 days.", fr: "Un accusé de réception dans un délai de 3 jours ouvrables, une première évaluation dans un délai de 10 jours ouvrables et des nouvelles au moins tous les 14 jours."}
+  - id: SEC-044
+    topic: severity
+    requirement: {en: "Each vulnerability gets a CVSS v4.0 score with its full vector.", fr: "Chaque vulnérabilité reçoit une cote du CVSS v4.0 avec son vecteur complet."}
+    international: {en: "CVSS v4.0 asks each publisher of a score to give its vector too. It expects the maintainer to give the base metrics, and the user to add the threat and environmental metrics.", fr: "Le CVSS v4.0 demande à chaque personne qui publie une cote de donner aussi son vecteur. Il prévoit que le responsable donne les métriques de base, et que l’utilisateur ajoute les métriques de menace et d’environnement."}
+    international_source: {title: "Common Vulnerability Scoring System version 4.0: Specification Document", version: "4.0, document version 1.2", date: "2024-06-18", url: "https://www.first.org/cvss/v4.0/specification-document", archive: "https://web.archive.org/web/20261026064457/https://www.first.org/cvss/v4.0/specification-document"}
+    fpsot: {en: "The full vector and the base score, labeled CVSS-B. Threat metrics optional, labeled CVSS-BT. No older version for a new vulnerability.", fr: "Le vecteur complet et la cote de base, désignée CVSS-B. Les métriques de menace en option, désignées CVSS-BT. Aucune version antérieure pour une nouvelle vulnérabilité."}
+  - id: SEC-045
+    topic: identifiers-advisories
+    requirement: {en: "Each fixed vulnerability gets its own CVE identifier.", fr: "Chaque vulnérabilité corrigée reçoit son propre identifiant CVE."}
+    international: {en: "The CNA rules require a different CVE identifier for each vulnerability that can be fixed on its own. When in doubt, the CNA assigns one identifier.", fr: "Les règles des CNA exigent un identifiant CVE distinct pour chaque vulnérabilité qu’on peut corriger séparément. En cas de doute, la CNA attribue un seul identifiant."}
+    international_source: {title: "CVE Numbering Authority (CNA) Operational Rules, rules 4.2.11 and 4.2.12", version: "4.2.1", date: "2026-10-20", url: "https://www.cve.org/ResourcesSupport/AllResources/CNARules", archive: "https://web.archive.org/web/20261026054457/https://www.cve.org/ResourcesSupport/AllResources/CNARules"}
+    fpsot: {en: "One CVE identifier per independently fixable flaw, and an advisory in the OSV format and in the advisory database of the forge.", fr: "Un identifiant CVE par faille qu’on peut corriger séparément, et un avis au format OSV et dans la base d’avis de la forge."}
+  - id: SEC-050
+    topic: pre-notice
+    requirement: {en: "Every known adopter that meets published criteria can join the pre-notice list, free of charge.", fr: "Toute organisation connue qui respecte les critères publiés peut adhérer gratuitement à la liste de préavis."}
+    international: {en: "The OpenSSF guide calls an embargo list optional for a project with few vendors downstream. When a project has one, the guide keeps it restricted and read-only, under the control of the team that handles vulnerabilities. It sets no criteria on fees.", fr: "Le guide de l’OpenSSF dit qu’une liste sous embargo est facultative pour un projet qui a peu de fournisseurs en aval. Quand un projet en a une, le guide la garde restreinte et en lecture seule, sous le contrôle de l’équipe qui traite les vulnérabilités. Il ne fixe aucun critère sur les frais."}
+    international_source: {title: "OpenSSF, Guide to implementing a coordinated vulnerability disclosure process for open source projects", version: "commit 8f3873496a6ec981f1ce178f0e202e4e560452e9", date: "2026-08-19", url: "https://github.com/ossf/oss-vulnerability-guide/blob/main/maintainer-guide.md", archive: "https://web.archive.org/web/20261028080124/https://github.com/ossf/oss-vulnerability-guide/blob/main/maintainer-guide.md"}
+    fpsot: {en: "One list for all known public bodies that use FPSOT components, and the hosting providers and integrators that run them for those bodies, on public and objective criteria, free of charge, with a published list of members. Early access is never sold.", fr: "Une seule liste pour tous les organismes publics connus qui emploient des composants de FPSOT, et pour les hébergeurs et les intégrateurs qui les exploitent pour eux, selon des critères publics et objectifs, sans frais, avec une liste publiée des membres. L’accès anticipé n’est jamais vendu."}
+  - id: SEC-054
+    topic: disclosure-dates
+    requirement: {en: "The head start is 7 days by default, from 72 hours to 14 days.", fr: "L’avance est de 7 jours par défaut, de 72 heures à 14 jours."}
+    international: {en: "The security team of the Linux kernel holds a fix back for at most 7 calendar days, and for 14 days only in exceptional cases.", fr: "L’équipe de sécurité du noyau Linux retient une correction au plus 7 jours civils, et 14 jours seulement dans des cas exceptionnels."}
+    international_source: {title: "The Linux Kernel documentation, Security bugs", date: "2026-10-26", url: "https://docs.kernel.org/process/security-bugs.html", archive: "https://web.archive.org/web/20261026101616/https://docs.kernel.org/process/security-bugs.html"}
+    fpsot: {en: "Seven days by default, at least 72 hours for a simple fix or a suspected leak, and at most 14 days for a fix that needs integration testing.", fr: "Sept jours par défaut, au moins 72 heures pour une correction simple ou une fuite soupçonnée, et au plus 14 jours pour une correction qui exige des tests d’intégration."}
+  - id: SEC-055
+    topic: disclosure-dates
+    requirement: {en: "Public release comes within 90 days of the report, extended once at most, or at once when the flaw is exploited or leaked.", fr: "La publication a lieu dans les 90 jours qui suivent le signalement, avec un seul report au plus, ou immédiatement quand la faille est exploitée ou divulguée."}
+    international: {en: "Project Zero gives a vendor 90 days to fix, and publishes after that even without a fix. For a flaw exploited in the wild, the deadline is 7 days.", fr: "Project Zero donne 90 jours à un fournisseur pour corriger, et publie après ce délai même sans correction. Pour une faille exploitée en situation réelle, le délai est de 7 jours."}
+    international_source: {title: "Google Project Zero, Vulnerability Disclosure Policy", url: "https://projectzero.google/vulnerability-disclosure-policy.html", archive: "https://web.archive.org/web/20261028120727/https://projectzero.google/vulnerability-disclosure-policy.html"}
+    fpsot: {en: "Ninety days from the report at the latest, with or without a fix, extended once by at most 30 days if the reporter agrees. At once when the security team finds the flaw exploited or leaked.", fr: "Quatre-vingt-dix jours après le signalement au plus tard, avec ou sans correction, avec un report unique d’au plus 30 jours si la personne qui signale y consent. Immédiatement quand l’équipe de sécurité constate que la faille est exploitée ou divulguée."}
+  - id: SEC-056
+    topic: pre-notice
+    requirement: {en: "A public notice gives the date, the component and the severity about a week before the release.", fr: "Un avis public donne la date, le composant et la gravité environ une semaine avant la publication."}
+    international: {en: "The FIRST guidelines describe a limited public notice before disclosure, with the product, the worst impact and the date, and no hint of how to exploit the flaw.", fr: "Les lignes directrices du FIRST décrivent un avis public limité avant la divulgation, avec le produit, le pire impact et la date, sans aucun indice sur la façon d’exploiter la faille."}
+    international_source: {title: "FIRST, Guidelines and Practices for Multi-Party Vulnerability Coordination and Disclosure, use case 3", version: "1.1", date: "2020", url: "https://www.first.org/global/sigs/vulnerability-coordination/multiparty/guidelines-v1.1", archive: "https://web.archive.org/web/20261023101448/https://www.first.org/global/sigs/vulnerability-coordination/multiparty/guidelines-v1.1"}
+    fpsot: {en: "About 7 days ahead, or with the pre-notice when the head start is shorter. None for an immediate release.", fr: "Environ 7 jours à l’avance, ou avec le préavis quand l’avance est plus courte. Aucun avis pour une publication immédiate."}
+  - id: SEC-057
+    topic: pre-notice
+    requirement: {en: "Members may deploy the fix, but must not share it beyond their staff and named operators before the release.", fr: "Les membres peuvent déployer la correction, mais ne doivent pas la transmettre au-delà de leur personnel et de leurs exploitants désignés avant la publication."}
+    international: {en: "TLP:AMBER limits sharing to the organization of the recipient and its clients, on a need-to-know basis. TLP:AMBER+STRICT limits it to the organization alone.", fr: "TLP:AMBER limite la diffusion à l’organisation du destinataire et à ses clients, selon le besoin de connaître. TLP:AMBER+STRICT la limite à l’organisation seule."}
+    international_source: {title: "FIRST, Traffic Light Protocol (TLP), Standards Definitions and Usage Guidance", version: "2.0", date: "2022-08", url: "https://www.first.org/tlp/", archive: "https://web.archive.org/web/20261023090331/https://www.first.org/tlp/"}
+    fpsot: {en: "Deployment on the systems the member operates. Sharing with its staff and with the named contractors or shared-service bodies that operate its systems, under TLP:AMBER limited to them. No republication, a leak reported at once, and removal only after a recorded finding, with appeal.", fr: "Déploiement sur les systèmes que le membre exploite. Transmission à son personnel et aux entreprises ou organismes de services partagés désignés qui exploitent ses systèmes, sous TLP:AMBER limité à eux. Aucune republication, une fuite signalée sans délai, et le retrait seulement après un constat consigné, avec appel."}
+  - id: SEC-063
+    topic: security-policy
+    requirement: {en: "Each repository has a SECURITY.md file in English and French, with fixed content.", fr: "Chaque dépôt a un fichier SECURITY.md en français et en anglais, au contenu fixé."}
+    international: {en: "Control OSPS-VM-01.01 of the OpenSSF Baseline requires a coordinated disclosure policy with a clear time to respond, and recommends a SECURITY.md file for it.", fr: "La mesure OSPS-VM-01.01 de la base de référence de l’OpenSSF exige une politique de divulgation coordonnée avec un délai de réponse clair, et recommande un fichier SECURITY.md à cette fin."}
+    international_source: {title: "OpenSSF Open Source Project Security Baseline, OSPS-VM-01.01", version: "v2026.08.28", date: "2026-08-28", url: "https://baseline.openssf.org/versions/2026-08-28", archive: "https://github.com/ossf/security-baseline/blob/a26a7963f6fd098c1e82829322ec9e1196a4f294/baseline/OSPS-VM.yaml#L21"}
+    fpsot: {en: "Required in every repository, of code or of a specification, in both languages, with the channels, versions, times, dates and how to verify a release.", fr: "Obligatoire dans chaque dépôt, de code ou de spécification, dans les deux langues, avec les canaux, les versions, les délais, les dates et la façon de vérifier une version."}
+  - id: SEC-081
+    topic: security-tests
+    requirement: {en: "Each product with an API runs a dynamic scan against a running build before each release.", fr: "Chaque produit doté d’une API exécute un balayage dynamique sur une construction en marche avant chaque version."}
+    international: {en: "Task PW.8.2 of the SSDF asks the producer to scope, design, run and document tests of its executable code, and to record and triage the findings.", fr: "La tâche PW.8.2 du SSDF demande au producteur de délimiter, de concevoir, d’exécuter et de documenter les tests de son code exécutable, et de consigner et de trier les constats."}
+    international_source: {title: "NIST SP 800-218, Secure Software Development Framework (SSDF) Version 1.1, task PW.8.2", version: "1.1", date: "2022-02", url: "https://csrc.nist.gov/pubs/sp/800/218/final", archive: "https://web.archive.org/web/20261106220457/https://csrc.nist.gov/pubs/sp/800/218/final"}
+    fpsot: {en: "A dynamic scan from the published API description, against the built artifact with synthetic data, that blocks the release on high or critical findings.", fr: "Un balayage dynamique à partir de la description publiée de l’API, sur l’artefact construit avec des données synthétiques, qui bloque la version en cas de constats élevés ou critiques."}

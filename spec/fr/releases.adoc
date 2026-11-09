@@ -1,0 +1,71 @@
+= Versions prises en charge et fichiers de sécurité
+include::_fpsot-terms.adoc[]
+
+Ces règles fixent quelles versions d’un produit de la {abbr-fpsot-first} reçoivent des corrections de sécurité.
+Elles fixent aussi la fin de vie d’une version, et ce que chaque dépôt publie sur sa sécurité.
+
+== Versions prises en charge
+
+[[SEC-060]]
+*SEC-060.* Chaque projet DOIT publier dans son fichier `SECURITY.md` les versions qui reçoivent des corrections de sécurité.
+Il DOIT prendre en charge au moins la dernière version mineure de sa dernière version majeure.
+Après la sortie d’une nouvelle version majeure, le projet DEVRAIT corriger la précédente pendant au moins 12 mois.
+Ces corrections vont sur une branche `release/N.x` de VCS-107.
+Une organisation peut alors planifier ses mises à niveau, et sait quand une version ne reçoit plus de corrections.
+
+[[SEC-061]]
+*SEC-061.* Un projet DOIT annoncer la fin du soutien d’une version majeure au moins 6 mois à l’avance.
+L’annonce DOIT figurer dans `SECURITY.md`, dans les notes de version et avec les avis publics de date de SEC-056.
+Après cette date, le projet NE DOIT PAS promettre de corrections pour cette version.
+L’équipe de sécurité PEUT quand même la corriger une fois, pour une {term-vulnerability} critique exploitée, en consignant la raison.
+Un organisme public a besoin de plusieurs mois pour budgéter, tester et déployer une mise à niveau.
+
+== Corrections dans les versions
+
+[[SEC-062]]
+*SEC-062.* Un projet DOIT livrer chaque correction de sécurité dans une version corrective de chaque version prise en charge touchée.
+La version DOIT contenir la correction et les changements qu’elle exige, et NE DEVRAIT rien contenir d’autre.
+Le journal des modifications DOIT inscrire la correction sous un titre `Security`, avec l’identifiant de son avis de sécurité.
+Une petite version se teste vite, et c’est ce dont une organisation a besoin pendant une courte avance.
+
+== Le fichier SECURITY.md
+
+[[SEC-063]]
+*SEC-063.* Chaque dépôt de code ou de spécification DOIT avoir un fichier `SECURITY.md`, à sa racine ou dans `.github/`.
+Le fichier DOIT donner, en français et en anglais :
+
+* les canaux privés de SEC-040, et un avertissement de ne pas employer un billet public ou un groupe de travail;
+* les versions prises en charge et les dates de fin de SEC-060 et de SEC-061;
+* les délais de SEC-043, et la version du {abbr-cvss-first} de SEC-044;
+* un résumé du préavis et des dates de SEC-050 à SEC-056;
+* des liens vers les critères et vers la liste des membres;
+* comment vérifier une version, selon SEC-036;
+* comment {abbr-fpsot} mentionne les personnes qui signalent, selon SEC-046.
+
+Un dépôt PEUT copier le gabarit `examples/SECURITY.md` de cette spécification.
+Le lectorat et les outils cherchent ce fichier par son nom.
+La forge le montre aussi comme la politique de sécurité du dépôt.
+
+[[SEC-064]]
+*SEC-064.* Chaque dépôt DOIT activer le signalement privé de vulnérabilités de sa forge, ou un canal privé équivalent.
+Si la forge n’offre pas cette fonction, le fichier `SECURITY.md` DOIT renvoyer au second canal de SEC-040.
+La personne qui signale joint alors les bonnes personnes en une étape, à partir du dépôt lui-même.
+
+[[SEC-065]]
+*SEC-065.* Chaque site Web de {abbr-fpsot} DEVRAIT publier un fichier `security.txt`, comme le décrit le link:https://www.rfc-editor.org/info/rfc9116[RFC 9116].
+Ce fichier DEVRAIT renvoyer aux mêmes canaux et à la même politique que le fichier `SECURITY.md`.
+Les personnes qui trouvent une faille par un site Web cherchent d’abord ce fichier.
+
+== Références
+
+=== Références informatives
+
+* link:https://www.rfc-editor.org/info/rfc9116[RFC 9116, A File Format to Aid in Security Vulnerability Disclosure], IETF, 2022-04. link:https://web.archive.org/web/20261029235042/https://www.rfc-editor.org/info/rfc9116/[Copie archivée]
+
+== Historique du document
+
+[cols="1,1,4",options="header"]
+|===
+|Version |Date |Changement
+|0.1.0 |2026-11-08 |Première version.
+|===

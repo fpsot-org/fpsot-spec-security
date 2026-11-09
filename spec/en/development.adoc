@@ -1,0 +1,90 @@
+= Secure development
+include::_fpsot-terms.adoc[]
+
+These rules set how an {abbr-fpsot-first} project builds security into its work, from design to release.
+They profile the link:https://csrc.nist.gov/pubs/sp/800/218/final[NIST SP 800-218] Secure Software Development Framework, version 1.1.
+They also set how a product states its security requirements with the link:https://asvs.owasp.org/[OWASP ASVS 5.0.0].
+
+== The SSDF profile
+
+The {abbr-ssdf-first} groups its practices in four groups.
+They prepare the organization, protect the software, produce well-secured software and respond to vulnerabilities.
+The {abbr-ssdf} states outcomes, not methods, so each user picks how to reach them.
+This specification makes that choice for {abbr-fpsot} projects.
+The table maps each practice group to the rules that meet it.
+
+[cols="1,2,2",options="header"]
+|===
+|Group |Purpose in summary |Rules of this specification
+|PO, Prepare the Organization |Define security requirements, roles, tools and checks. |SEC-001 to SEC-006, SEC-010, SEC-012
+|PS, Protect the Software |Protect the code from tampering, let users check releases and keep each release with its data. |SEC-020 to SEC-024, SEC-033 to SEC-036
+|PW, Produce Well-Secured Software |Design with risk in mind, reuse secure components, review, analyze and test the code. |SEC-003 to SEC-006, SEC-010 to SEC-016, SEC-030 to SEC-032, SEC-080 to SEC-084
+|RV, Respond to Vulnerabilities |Find, assess and fix vulnerabilities, and find their root causes. |SEC-040 to SEC-073
+|===
+
+[[SEC-001]]
+*SEC-001.* Each {abbr-fpsot} project MUST meet the practices of {abbr-ssdf} 1.1 as this specification profiles them.
+A project MAY go beyond this profile, with stricter or added controls.
+A project MUST NOT claim conformance to the {abbr-ssdf} itself on the basis of this specification alone.
+The {abbr-ssdf} is a framework of outcomes, so a profile gives the project one clear way to reach them.
+Any {abbr-ssdf} task that this profile does not cover stays the choice of the project.
+
+[[SEC-002]]
+*SEC-002.* Each project MUST name at least two maintainers as its security contacts.
+They MUST be able to reach the {abbr-fpsot} security team of SEC-042 in private.
+They MUST take part in each report that concerns their project.
+One person can be away or leave, and a report must still get an answer within the times of SEC-043.
+
+== Threat models
+
+A threat model describes what a product protects, who could attack it and how the product resists.
+
+[[SEC-003]]
+*SEC-003.* Each product MUST have a threat model, kept in its repository as text.
+The team MUST write it before the first release and MUST update it when a change alters a trust boundary.
+Examples of such changes are a new interface, a new kind of data or a new outside system.
+The team MUST review it at least once a year, with the date of the review recorded in the file.
+A model kept beside the code changes with the code, and reviewers see it in each pull request.
+
+[[SEC-004]]
+*SEC-004.* A threat model MUST name the assets, the actors, the trust boundaries and the threats.
+Each threat MUST have a response: a product control, an operator control, or an accepted risk with its reason.
+A team MAY use any method, such as STRIDE or attack trees.
+Authors MUST draw each diagram of the model as code, under DOC-030.
+An operator learns which controls are its own duty, and a reader sees why the team accepts each risk.
+
+== Security requirements
+
+The {abbr-asvs-first} of the {abbr-owasp-first} sets security requirements for applications, in three levels.
+Level 1 is the minimum for any application.
+Most applications should strive for Level 2, but each organization picks its level from a risk analysis.
+Level 3 suits the most critical applications.
+
+[[SEC-005]]
+*SEC-005.* Each product MUST choose a level of {abbr-asvs} 5.0.0 and record it in its repository, with the reason.
+A product that serves the public or handles personal information for a public body MUST choose Level 2 or 3.
+Level 2 is the {abbr-fpsot} default for such products.
+A library or a tool with no user interface and no stored data MAY choose Level 1.
+A public body expects a known level of assurance, and Level 2 is the level that most such systems need.
+
+[[SEC-006]]
+*SEC-006.* A product MUST cite each security requirement by its {abbr-asvs} identifier, with the version, such as `v5.0.0-1.2.5`.
+A product MUST record each requirement it does not meet at its level, with the reason and the compensating control.
+A product MUST NOT copy the text of the {abbr-asvs} into its own documents.
+The version in the identifier keeps the citation exact when the {abbr-asvs} changes.
+The {abbr-asvs} text is under a share-alike license, which would then apply to the copy.
+
+== References
+
+=== Normative
+
+* link:https://csrc.nist.gov/pubs/sp/800/218/final[NIST SP 800-218, Secure Software Development Framework (SSDF) Version 1.1: Recommendations for Mitigating the Risk of Software Vulnerabilities], NIST, version 1.1, 2022-02. link:https://web.archive.org/web/20261106220457/https://csrc.nist.gov/pubs/sp/800/218/final[Archived copy]
+* link:https://asvs.owasp.org/[OWASP Application Security Verification Standard], OWASP Foundation, 5.0.0, 2025-05-30. link:https://web.archive.org/web/20261101232652/https://asvs.owasp.org/[Archived copy]
+
+== Document history
+
+[cols="1,1,4",options="header"]
+|===
+|Version |Date |Change
+|0.1.0 |2026-11-08 |First version.
+|===

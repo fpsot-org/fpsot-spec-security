@@ -1,15 +1,85 @@
-= Guide
-:page-type: explanation
+= Traiter un signalement de vulnérabilité
+:page-type: how-to
 include::_fpsot-terms.adoc[]
 
-Cette page explique la spécification aux personnes qui l’adoptent.
-Chaque page de guide a un seul type.
-C’est un tutoriel, un guide pratique, une référence ou une explication.
+Ce guide mène un membre de l’équipe de sécurité de la {abbr-fpsot-first} d’un nouveau signalement jusqu’à la publication.
+Chaque étape cite la règle qu’elle respecte.
+
+== Avant tout signalement
+
+Activez le signalement privé de vulnérabilités de chaque dépôt, selon SEC-064.
+Copiez le gabarit `examples/SECURITY.md` dans chaque dépôt et remplacez ses espaces réservés, selon SEC-063.
+Vérifiez que les personnes-ressources en sécurité de chaque projet peuvent joindre l’équipe de sécurité en privé, selon SEC-002.
+
+== Jours 0 à 3 : accuser réception
+
+Un signalement arrive par le canal privé de SEC-040.
+S’il est arrivé dans un billet public ou dans un groupe de travail, masquez-le immédiatement et suivez SEC-041.
+Répondez à la personne qui signale dans un délai de 3 jours ouvrables, selon SEC-043.
+Ouvrez un registre privé du signalement, selon SEC-048.
+
+== Jours 3 à 14 : évaluer
+
+Reproduisez la faille sur une version prise en charge.
+Cotez-la avec le {abbr-cvss-first} v4.0 et consignez le vecteur complet, selon SEC-044.
+Par exemple, une faille qui permet à tout appelant connecté de lire les données d’autrui pourrait recevoir cette cote.
+
+[source,text]
+----
+CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N
+----
+
+En 10 jours ouvrables au plus, dites à la personne si vous acceptez le signalement, et sa gravité.
+Demandez un identifiant {abbr-cve-first} pour la faille, selon SEC-045.
+Notez la date limite de publication : 90 jours après le signalement, selon SEC-055.
+
+== Corriger en privé
+
+Écrivez la correction dans une bifurcation privée temporaire, jamais dans une branche publique.
+La deuxième revue de SEC-010 s’applique toujours.
+Écrivez le test de SEC-047, mais gardez-le dans la bifurcation privée jusqu’à la publication, selon SEC-083.
+Préparez une version corrective de chaque version prise en charge touchée, selon SEC-062.
+
+== Envoyer le préavis
+
+Choisissez l’avance, selon SEC-054.
+L’avance par défaut est de sept jours.
+Prenez 72 heures pour une correction simple, et jusqu’à 14 jours pour une correction qui exige des tests d’intégration.
+Consignez la raison de toute autre valeur.
+
+Envoyez le préavis à tous les membres de la liste en même temps, selon SEC-050 et SEC-053.
+Il contient les détails, la correction, le vecteur, les versions touchées et la date de la publication.
+Il énonce aussi les obligations des membres prévues à SEC-057.
+
+== Publier l’avis de date
+
+Environ 7 jours avant la publication, publiez l’avis public de date, selon SEC-056.
+Il donne la date, le composant et la gravité, et rien d’autre.
+Quand l’avance est plus courte, publiez-le avec le préavis.
+
+[source,text]
+----
+Le 2026-12-08 à 14 h UTC, FPSOT publiera une correction de sécurité pour <composant>.
+Gravité : élevée. Les détails suivront avec la publication.
+----
+
+== Surveiller les fuites
+
+Si un membre signale une fuite, évaluez immédiatement si les détails ont fui, selon SEC-058.
+Si c’est le cas, ou si une exploitation apparaît, publiez immédiatement selon SEC-055.
+Retirez un membre seulement si une courte revue montre que la fuite est passée par lui, selon SEC-059.
+
+== Publier
+
+Publiez les versions correctives avec leur {abbr-sbom-first}, leur provenance et leurs signatures, selon SEC-033 à SEC-036.
+Publiez l’avis de sécurité au format {abbr-osv-first} et dans la base d’avis de la forge, selon SEC-046.
+Mentionnez la personne qui a signalé la faille, comme elle le souhaite.
+Fusionnez le test de la faille, et cherchez sa cause profonde, selon SEC-047.
 
 == Historique du document
 
 [cols="1,1,4",options="header"]
 |===
 |Version |Date |Changement
-|0.1.0 |2026-11-03 |Première version.
+|0.1.0 |2026-11-08 |Première version.
 |===

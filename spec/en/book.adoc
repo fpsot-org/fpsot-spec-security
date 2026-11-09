@@ -4,4 +4,24 @@
 
 include::index.adoc[leveloffset=+1]
 
+include::development.adoc[leveloffset=+1]
+
+include::code-review.adoc[leveloffset=+1]
+
+include::secrets.adoc[leveloffset=+1]
+
+include::supply-chain.adoc[leveloffset=+1]
+
+include::reporting.adoc[leveloffset=+1]
+
+include::disclosure.adoc[leveloffset=+1]
+
+include::releases.adoc[leveloffset=+1]
+
+include::specifications.adoc[leveloffset=+1]
+
+include::security-tests.adoc[leveloffset=+1]
+
+include::legal-context.adoc[leveloffset=+1]
+
 include::glossary.adoc[leveloffset=+1]

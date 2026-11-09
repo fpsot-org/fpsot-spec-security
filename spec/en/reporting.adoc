@@ -1,0 +1,111 @@
+= Reporting and handling vulnerabilities
+include::_fpsot-terms.adoc[]
+
+These rules set how a person reports a {term-vulnerability} in an {abbr-fpsot-first} project, and how the project handles the report.
+xref:disclosure.adoc[Pre-notice and disclosure] sets who learns of it, and when.
+
+== Reports stay out of Working Groups
+
+Each {abbr-fpsot} specification repository holds the link:https://github.com/CommunitySpecification/Community_Specification/blob/8a05e46d768ac0525af882b619c42f3380a9e869/05-governance.md[governance file of the Community Specification 1.0].
+Its section 5 says that information shared in Working Group activity is not confidential.
+That covers meetings, contributions and submissions, whatever their markings.
+In a private repository, participants also need the approval of the Working Group to disclose it in public.
+Even then, every participant can read a report, and no duty of confidentiality binds them.
+The rules below therefore keep every report outside Working Group activity.
+
+[[SEC-040]]
+*SEC-040.* Each repository MUST offer a private channel to report a {term-vulnerability}, such as the reporting feature of its forge.
+The channel MUST deliver each report only to the security contacts of SEC-002 and to the security team.
+The foundation MUST also offer a second private channel for people without an account, such as an encrypted email address.
+A report MUST NOT go through a Working Group, a public issue or discussion, a mailing list or a meeting.
+A private channel lets the project fix the flaw before attackers learn of it.
+
+[[SEC-041]]
+*SEC-041.* A maintainer who finds a report in a public place MUST hide or remove it at once, where possible.
+The maintainer MUST then ask the reporter to use the private channel, and MUST tell the security team.
+The security team MUST treat that {term-vulnerability} as possibly public under SEC-055.
+A report that anyone could read may already be in the hands of an attacker.
+
+[[SEC-042]]
+*SEC-042.* {abbr-fpsot} MUST have a security team that handles each report outside Working Group activity.
+The team MUST have at least three members, and {abbr-fpsot} MUST publish their roles and how to reach them.
+Each member MUST agree in writing to keep reports and fixes confidential until their public release.
+Anyone else who can see private reports, such as an administrator or an organization owner, MUST sign the same pledge.
+The team decides the severity, the dates of the pre-notice and of the public release, and any early release.
+A small, known group with a duty of confidentiality is what makes private handling possible.
+
+== Times
+
+[[SEC-043]]
+*SEC-043.* The security team MUST acknowledge each report within 3 business days of its receipt.
+Within 10 business days, it MUST tell the reporter whether it accepts the report, and with what severity.
+It SHOULD then tell the reporter of its progress at least every 14 days, until the public release.
+A reporter who hears nothing may go public sooner, and fast answers keep the reporter working with the project.
+
+== Severity
+
+[[SEC-044]]
+*SEC-044.* The security team MUST score each accepted {term-vulnerability} in software with link:https://www.first.org/cvss/v4.0/specification-document[CVSS v4.0].
+It MUST record the full vector string, starting with `CVSS:4.0/`, and the severity rating that the vector gives.
+It MUST publish the base score with the label `CVSS-B`, as the specification names it.
+It MAY add the threat metrics when it knows of exploitation, with the label `CVSS-BT`.
+It MUST NOT use an older version of {abbr-cvss-first} for a new {term-vulnerability}.
+Adopters compare scores across products, and this only works with one version and the full vector.
+
+== Identifiers and advisories
+
+[[SEC-045]]
+*SEC-045.* The security team MUST obtain a {abbr-cve-first} identifier for each {term-vulnerability} it fixes in software.
+It uses a {abbr-cve} Numbering Authority, such as that of the forge or of a body that covers the product.
+Each flaw that a team can fix on its own MUST get its own identifier.
+The link:https://www.cve.org/ResourcesSupport/AllResources/CNARules[CNA Operational Rules] require this.
+A {abbr-cve} identifier lets every scanner and every adopter track the same flaw under one name.
+
+[[SEC-046]]
+*SEC-046.* The security team MUST publish a security advisory for each fixed {term-vulnerability}, at its public release.
+The advisory MUST follow the link:https://ossf.github.io/osv-schema/[OSV schema], and MUST appear in the advisory database of the forge, if any.
+It MUST give the {abbr-cve} identifier, the affected and fixed versions, the {abbr-cvss} vector and a description.
+It MUST also give any workaround, and the dates of the report, the pre-notice and the release.
+It MUST credit the reporter, under the name the reporter chooses, unless the reporter asks for no credit.
+Machines read the {abbr-osv-first} format, so scanners can warn each adopter who runs an affected version.
+
+== After the fix
+
+[[SEC-047]]
+*SEC-047.* The project MUST add a test that fails on the flaw and passes on the fix, under SEC-083.
+The team MUST look for the root cause and for the same flaw elsewhere in its code.
+It SHOULD record what it changes in its process to prevent a repeat.
+A fix of one instance leaves the others in place if nobody looks for the cause.
+
+[[SEC-048]]
+*SEC-048.* The security team MUST keep a private record of each report, with the date of each step.
+The record MUST hold each decision with its reason.
+It MUST keep the record for at least 5 years after the public release.
+A record shows that each report got the same treatment, and it answers the questions of adopters and auditors.
+
+== Flaws in outside components
+
+[[SEC-049]]
+*SEC-049.* When a {term-vulnerability} sits in an outside component, the security team MUST follow the embargo of its maintainers.
+It MUST NOT disclose the flaw, or a fix that reveals it, before the date that they set.
+It MAY send a pre-notice to the members of SEC-050 only for what these maintainers permit.
+The team SHOULD report the flaw to these maintainers first, if they do not know of it.
+Breaking the embargo of another project would harm its users, and those of {abbr-fpsot} too.
+
+== References
+
+=== Normative
+
+* link:https://github.com/CommunitySpecification/Community_Specification/blob/8a05e46d768ac0525af882b619c42f3380a9e869/05-governance.md[Community Specification 1.0, GOVERNANCE.md], Community Specification, 1.0, commit 8a05e46d768ac0525af882b619c42f3380a9e869. link:https://github.com/CommunitySpecification/Community_Specification/blob/8a05e46d768ac0525af882b619c42f3380a9e869/05-governance.md[Copy pinned to a commit]
+
+* link:https://www.first.org/cvss/v4.0/specification-document[Common Vulnerability Scoring System v4.0: Specification Document], FIRST, 4.0, document version 1.2, 2024-06-18. link:https://web.archive.org/web/20261026064457/https://www.first.org/cvss/v4.0/specification-document[Archived copy]
+* link:https://www.cve.org/ResourcesSupport/AllResources/CNARules[CVE Numbering Authority (CNA) Operational Rules], CVE Program, version 4.2.1, 2026-10-20. link:https://web.archive.org/web/20261026054457/https://www.cve.org/ResourcesSupport/AllResources/CNARules[Archived copy]
+* link:https://ossf.github.io/osv-schema/[Open Source Vulnerability format], Open Source Security Foundation, version 1.9.2, 2026-10-13. link:https://web.archive.org/web/20261023001718/https://ossf.github.io/osv-schema/[Archived copy]
+
+== Document history
+
+[cols="1,1,4",options="header"]
+|===
+|Version |Date |Change
+|0.1.0 |2026-11-08 |First version.
+|===

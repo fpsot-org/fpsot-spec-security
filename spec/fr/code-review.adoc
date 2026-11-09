@@ -1,0 +1,82 @@
+= Code, revue et analyse
+include::_fpsot-terms.adoc[]
+
+Ces règles fixent comment un projet de la {abbr-fpsot-first} revoit et analyse chaque changement avant sa fusion.
+Elles complètent les branches protégées de la spécification sur la gestion des versions.
+
+== Revue
+
+Un changement touchant la sécurité est un changement à l’une de ces parties d’un dépôt :
+
+* le code qui vérifie l’identité, l’accès ou les entrées;
+* le code qui emploie la cryptographie, des secrets ou des renseignements personnels;
+* les manifestes de dépendances et les fichiers de verrouillage;
+* les fichiers de construction, les flux de travail de l’{abbr-ci-first} et les scripts de publication;
+* le fichier `SECURITY.md`, le modèle de menaces et le fichier des responsables du code.
+
+[[SEC-010]]
+*SEC-010.* Avant sa fusion, un changement touchant la sécurité DOIT avoir l’approbation d’un ou d’une autre responsable que son auteur.
+Cette règle ajoute une deuxième personne à la demande de fusion qu’exige VCS-109.
+Tout autre changement DEVRAIT aussi avoir une telle approbation.
+Un ou une responsable NE DOIT PAS approuver son propre changement, même avec un autre compte.
+Une seule personne peut manquer une faille ou en introduire une.
+Une deuxième personne rend ces deux cas moins probables.
+
+[[SEC-011]]
+*SEC-011.* Le fichier des responsables du code d’un dépôt DOIT nommer des responsables pour chaque partie touchant la sécurité.
+Les branches protégées DOIVENT exiger la revue d’un ou d’une responsable du code pour ces parties.
+Le dépôt peut alors imposer lui-même SEC-010, sans compter sur chaque personne qui révise pour repérer la partie.
+
+== Analyse dans l’intégration continue
+
+[[SEC-012]]
+*SEC-012.* L’{abbr-ci} DOIT exécuter une analyse statique du code à chaque demande de fusion, comme vérification obligatoire.
+Un constat de gravité élevée ou critique DOIT bloquer la fusion.
+Une équipe NE DOIT PAS désactiver un constat sans raison consignée, selon SEC-016.
+L’analyse statique trouve les failles courantes, comme l’injection, avant qu’une personne revoie le changement.
+
+[[SEC-013]]
+*SEC-013.* L’{abbr-ci} DOIT balayer chaque demande de fusion pour y trouver des secrets, comme vérification obligatoire.
+Elle DOIT aussi balayer tout l’historique du dépôt au moins une fois par semaine.
+Une règle de poussée selon SEC-021 ne peut pas repérer un format de secret qu’elle ne connaît pas encore.
+Le balayage de l’historique le repère plus tard.
+
+[[SEC-014]]
+*SEC-014.* L’{abbr-ci} DOIT vérifier les dépendances de chaque demande de fusion dans une base publique de vulnérabilités connues.
+Elle DOIT faire la même vérification sur la branche `main` au moins une fois par jour.
+Une {term-vulnerability} connue de gravité élevée ou critique dans une dépendance DOIT bloquer la fusion, sauf exception consignée selon SEC-016.
+La base OSV et la GitHub Advisory Database sont des exemples de telles bases.
+Une nouvelle {term-vulnerability} peut apparaître dans une dépendance qui n’a pas changé : la vérification quotidienne la trouve.
+
+[[SEC-015]]
+*SEC-015.* Un projet DOIT employer un outil qui ouvre des demandes de fusion pour mettre à jour ses dépendances.
+Cet outil DOIT aussi couvrir les actions d’{abbr-ci}.
+Chacune de ces demandes DOIT réussir les vérifications obligatoires et DOIT avoir l’approbation d’un ou d’une responsable avant sa fusion.
+Un projet NE DOIT PAS fusionner ces mises à jour sans revue.
+Dependabot et Renovate sont des exemples de tels outils.
+Des mises à jour rapides ferment les failles connues, et une revue repère un paquet qu’un tiers hostile a détourné.
+
+[[SEC-016]]
+*SEC-016.* Chaque exception à un constat de SEC-012 à SEC-014 DOIT consigner sa raison et sa date de fin.
+Elle DOIT aussi nommer la personne qui en est responsable.
+La date de fin NE DOIT PAS tomber plus de 90 jours après la consignation.
+Un ou une autre responsable DOIT l’approuver, selon SEC-010.
+L’équipe PEUT renouveler une exception une fois, après une nouvelle revue et une nouvelle approbation.
+Une exception sans date de fin cache un risque pour toujours.
+
+== Outils
+
+[[SEC-017]]
+*SEC-017.* Un projet PEUT respecter ces règles avec tout outil, gratuit ou payant, qui offre la capacité voulue.
+Un projet NE DOIT PAS obliger les personnes qui contribuent à acheter un outil ou un service pour participer.
+Un projet DEVRAIT nommer dans son dépôt les outils qu’il emploie pour SEC-012 à SEC-015.
+Chaque règle nomme une capacité : un projet peut changer d’outil sans changer cette spécification.
+Des outils comme CodeQL ou Semgrep pour l’analyse, et Gitleaks pour les secrets, n’y figurent qu’à titre d’exemples.
+
+== Historique du document
+
+[cols="1,1,4",options="header"]
+|===
+|Version |Date |Changement
+|0.1.0 |2026-11-08 |Première version.
+|===

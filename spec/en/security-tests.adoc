@@ -1,0 +1,42 @@
+= Security tests
+include::_fpsot-terms.adoc[]
+
+These rules name the security tests of an {abbr-fpsot-first} project and tie them to the testing specification.
+Each security test belongs to a test level of TST-001, and runs under the rules of that specification.
+
+[[SEC-080]]
+*SEC-080.* The checks of SEC-012, SEC-013 and SEC-014 MUST be required checks of the protected branches, under TST-060.
+A failing check MUST block the merge, under TST-061.
+A security check that does not block a merge protects nothing.
+
+[[SEC-081]]
+*SEC-081.* Each product with an {abbr-api-first} MUST run a dynamic security scan against a running build before each release.
+The scan MUST use the published description of the {abbr-api}, under API-021, so that it reaches every operation.
+It MUST run against the built artifact, as TST-065 requires for functional tests.
+Its test environment MUST hold only synthetic data.
+A finding of high or critical severity MUST block the release, unless SEC-016 records an exception.
+A dynamic scan finds flaws that appear only when the parts run together, such as a missing check.
+
+[[SEC-082]]
+*SEC-082.* The functional or contract tests of a product with an {abbr-api} MUST check the rules of API design.
+They cover each such rule that the product must meet, including API-080 to API-083 and API-092.
+A test SHOULD prove that a caller cannot act on an item of another caller.
+A rule with no test can break in any release without anyone noticing.
+
+[[SEC-083]]
+*SEC-083.* The test of a fixed {term-vulnerability}, under SEC-047, MUST NOT reach a public repository before the public release.
+It MUST merge with the fix, or after it.
+A public test of an unfixed flaw shows attackers exactly how to exploit it.
+
+[[SEC-084]]
+*SEC-084.* Security tests MUST use synthetic data and test credentials only, under TST-050.
+A test credential MUST NOT grant access to any system outside the test run.
+A security test often needs a password or a key, and a real one in a test would break SEC-020.
+
+== Document history
+
+[cols="1,1,4",options="header"]
+|===
+|Version |Date |Change
+|0.1.0 |2026-11-08 |First version.
+|===

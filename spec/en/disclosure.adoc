@@ -1,0 +1,158 @@
+= Pre-notice and disclosure
+include::_fpsot-terms.adoc[]
+
+These rules set who learns of a fixed {term-vulnerability} before the public, and what they receive.
+They also set when the public learns of it.
+They follow coordinated disclosure: the fix exists before the details become public, except under SEC-055.
+
+The rules use these words:
+
+Pre-notice::
+A private message to the members of the pre-notice list, with the details of a {term-vulnerability} and its fix.
+
+Head start::
+The time from the pre-notice to the public release.
+
+Public release::
+The moment when the security advisory becomes public, with the fix when one exists.
+
+Public date notice::
+A short public message that gives the date of a coming public release, with no details.
+
+Limit::
+The last day allowed for the public release under SEC-055.
+
+These dates apply to vulnerabilities in the components and specifications of {abbr-fpsot-first}.
+SEC-049 covers a {term-vulnerability} in an outside component.
+
+== Who may join
+
+In this version, a public body is a body of Canada, or of a province or territory.
+A statute or an official list names it as such:
+
+* in Québec, a public body under its law on access to documents held by public bodies;
+* in Québec, a body that its law on the information resources of public bodies covers;
+* for the federal government, a department, an agency or a Crown corporation in the schedules of the Financial Administration Act;
+* in another province or territory, a body that its access-to-information statute names as a public body.
+
+Together, they cover ministries, agencies and municipalities.
+They also cover the bodies of the school and health networks, and Crown corporations.
+This version does not cover foreign governments.
+
+[[SEC-050]]
+*SEC-050.* {abbr-fpsot} MUST send each pre-notice to all members of one pre-notice list, at the same time.
+Every known adopter that meets the criteria of SEC-051 MUST be able to join it.
+Membership MUST be free of charge.
+The foundation MUST NOT sell early access.
+It MUST NOT tie membership to a fee, a donation, a contract or a paid service.
+A fix that only paying users get first would turn the safety of the public into a privilege.
+
+[[SEC-051]]
+*SEC-051.* {abbr-fpsot} MUST publish objective criteria of membership, and each member MUST be one of these:
+
+* a public body that uses an {abbr-fpsot} component or specification, in production or in a planned deployment;
+* a hosting provider or an integrator that runs such a component in production for a public body.
+
+A member MUST give a security contact that a team monitors, such as a role address, with encrypted messages.
+It MUST accept the rules of SEC-057 to SEC-059 in writing.
+A vendor that only resells a component MUST NOT be a member.
+A shared-service body MAY join in its own right.
+The security team MUST give the reason for each refusal in writing.
+Public criteria let every adopter know whether it qualifies, and let others check that each decision followed them.
+
+[[SEC-052]]
+*SEC-052.* {abbr-fpsot} MUST publish the list of member organizations, and MUST keep it up to date.
+The list MUST name each organization, but MUST NOT name its contacts.
+A published list shows that admission follows the criteria, and lets each adopter see who else is a member.
+
+== The pre-notice
+
+[[SEC-053]]
+*SEC-053.* A pre-notice MUST give:
+
+* the details of the {term-vulnerability} and its fix, as a patch or a fixed build;
+* the severity of SEC-044 or SEC-073, the affected and fixed versions and any workaround;
+* the date and time of the public release;
+* the duties of members of SEC-057.
+
+A pre-notice SHOULD carry a sharing label that limits it to the member and to its named operators of SEC-057.
+An example is `TLP:AMBER` of the link:https://www.first.org/tlp/[Traffic Light Protocol 2.0], with its sharing limited to these operators.
+It MUST travel over an encrypted or access-controlled channel.
+The members can test and stage the fix only when they have it.
+The label shows who may see it.
+
+== Dates
+
+[[SEC-054]]
+*SEC-054.* The head start MUST be 7 days by default.
+The security team MAY shorten it to no less than 72 hours, for a simple fix or a suspected leak.
+The security team MAY lengthen it to no more than 14 days, for a fix that needs integration testing.
+The pre-notice SHOULD go out no later than 72 hours before the limit of SEC-055, which wins over these values.
+The team MUST record the reason for any head start other than 7 days.
+Seven days let a public body test a fix, and the risk of a leak grows each day.
+
+[[SEC-055]]
+*SEC-055.* The public release MUST happen no later than 90 days after the report reaches the security team.
+The team MAY extend this limit once, by at most 30 days, if the reporter agrees in a record.
+If no fix exists at the limit, the security advisory MUST still go public, with the known workarounds.
+The team MUST release at once when it finds that attackers exploit the {term-vulnerability}, or that its details leaked.
+Without a fix, it releases the advisory with the known workarounds, and members get the pre-notice first or at once.
+Only the security team makes these findings, and a member that sees signs of either MUST report them to it.
+
+[[SEC-056]]
+*SEC-056.* {abbr-fpsot} MUST publish a public date notice about 7 days before each public release.
+The notice MUST give the date, the component and the severity, and MUST NOT give any other detail.
+When the head start is shorter than 7 days, the notice MUST go out with the pre-notice.
+An immediate release under SEC-055 needs no notice.
+Adopters that are not on the list, or that {abbr-fpsot} does not know, can then plan for the release too.
+
+== Duties of members
+
+[[SEC-057]]
+*SEC-057.* A member MAY deploy the fix to the systems that it operates, before the public release.
+A member MAY share the pre-notice with its staff, and with the contractors or shared-service bodies that operate its systems.
+It MUST name these operators to the security team, and each MUST accept these rules in writing.
+The member answers for any leak through its operators.
+A member MUST NOT share or republish the pre-notice, the fix or a fixed image with others before the release.
+A member MAY say that a fix is coming and give the date of the public release.
+
+[[SEC-058]]
+*SEC-058.* A member MUST tell the security team at once when it learns or suspects that a pre-notice has leaked.
+The security team MUST then assess whether the details have leaked, and SEC-055 applies if they have.
+A suspicion alone MUST NOT lead to the removal of a member.
+Each copy of a pre-notice raises the risk of a leak, so the team acts at once on each report.
+
+[[SEC-059]]
+*SEC-059.* The security team MUST remove a member only after a short review shows that a leak came through it.
+The team MUST record that finding, and give the member its reasons in writing.
+The member MAY appeal under the {abbr-fpsot} governance, and MAY apply again 12 months later, with the steps it took.
+For a first leak that a member reports itself, the team MUST warn it in writing instead of removing it.
+That member MUST show its corrective steps within 30 days, and a second leak within 24 months leads to removal.
+A fair process keeps the list open, and a lighter path rewards the members that speak up.
+
+== Legal points
+
+[NOTE]
+====
+This section is informative and is not legal advice.
+The points below need a lawyer before {abbr-fpsot} relies on them.
+
+* *Notice to some users only.* A user outside the list could claim harm during the head start. The published criteria, the short head start and the public date notice reduce this risk, but do not remove it.
+* *Access to information.* Most members are public bodies, which access-to-information laws govern. Someone could ask a member for a pre-notice under such a law. Whether the pre-notice can then stay private is a question for a lawyer.
+* *Manufacturers and stewards in the European Union.* Some of them build {abbr-fpsot} components into their products. Article 14 of the Cyber Resilience Act gives them their own clocks once attackers exploit a flaw. This version does not admit them to the list, and a lawyer should review that choice.
+* *The European Union Cyber Resilience Act.* See xref:legal-context.adoc[Laws and deadlines of recipients].
+====
+
+== References
+
+=== Informative
+
+* link:https://www.first.org/tlp/[Traffic Light Protocol (TLP), FIRST Standards Definitions and Usage Guidance], FIRST, version 2.0, 2022-08. link:https://web.archive.org/web/20261023090331/https://www.first.org/tlp/[Archived copy]
+
+== Document history
+
+[cols="1,1,4",options="header"]
+|===
+|Version |Date |Change
+|0.1.0 |2026-11-08 |First version.
+|===

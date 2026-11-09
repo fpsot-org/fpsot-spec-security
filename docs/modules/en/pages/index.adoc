@@ -1,15 +1,85 @@
-= Guide
-:page-type: explanation
+= Handle a vulnerability report
+:page-type: how-to
 include::_fpsot-terms.adoc[]
 
-This page explains the specification for the people who adopt it.
-Each guide page has one type.
-It is a tutorial, a how-to guide, a reference or an explanation.
+This guide takes a member of the {abbr-fpsot-first} security team from a new report to the public release.
+Each step cites the rule it meets.
+
+== Before any report
+
+Turn on the private vulnerability reporting of each repository, under SEC-064.
+Copy the template `examples/SECURITY.md` into each repository and fill in its placeholders, under SEC-063.
+Check that the security contacts of each project can reach the security team in private, under SEC-002.
+
+== Day 0 to day 3: acknowledge
+
+A report arrives through the private channel of SEC-040.
+If it arrived in a public issue or in a Working Group, hide it at once and follow SEC-041.
+Answer the reporter within 3 business days, under SEC-043.
+Open a private record of the report, under SEC-048.
+
+== Day 3 to day 14: assess
+
+Reproduce the flaw on a supported version.
+Score it with {abbr-cvss-first} v4.0 and record the full vector, under SEC-044.
+For example, a flaw that lets any signed-in caller read the data of others could score as follows.
+
+[source,text]
+----
+CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N
+----
+
+Tell the reporter, within 10 business days, whether you accept the report and how severe it is.
+Request a {abbr-cve-first} identifier for it, under SEC-045.
+Note the deadline of the public release: 90 days after the report, under SEC-055.
+
+== Fix in private
+
+Write the fix in a temporary private fork, never in a public branch.
+The second review of SEC-010 still applies.
+Write the test of SEC-047, but keep it in the private fork until the public release, under SEC-083.
+Prepare a patch release of each supported version that the flaw affects, under SEC-062.
+
+== Send the pre-notice
+
+Choose the head start, under SEC-054.
+Seven days is the default.
+Use 72 hours for a simple fix, and up to 14 days for a fix that needs integration testing.
+Record the reason for any other value.
+
+Send the pre-notice to every member of the list at the same time, under SEC-050 and SEC-053.
+It holds the details, the fix, the vector, the affected versions and the date of the public release.
+It also states the duties of members of SEC-057.
+
+== Publish the date notice
+
+About 7 days before the public release, publish the public date notice, under SEC-056.
+It gives the date, the component and the severity, and nothing else.
+When the head start is shorter, publish it with the pre-notice.
+
+[source,text]
+----
+On 2026-12-08 at 14:00 UTC, FPSOT will publish a security fix for <component>.
+Severity: High. Details will follow with the release.
+----
+
+== Watch for leaks
+
+If a member reports a leak, assess at once whether the details leaked, under SEC-058.
+If they did, or if signs of exploitation appear, release at once under SEC-055.
+Remove a member only after a short review shows that the leak came through it, under SEC-059.
+
+== Release
+
+Publish the patch releases with their {abbr-sbom-first}, provenance and signatures, under SEC-033 to SEC-036.
+Publish the security advisory in the {abbr-osv-first} format and in the advisory database of the forge, under SEC-046.
+Credit the reporter as they wish.
+Merge the test of the flaw, and look for its root cause, under SEC-047.
 
 == Document history
 
 [cols="1,1,4",options="header"]
 |===
 |Version |Date |Change
-|0.1.0 |2026-11-03 |First version.
+|0.1.0 |2026-11-08 |First version.
 |===

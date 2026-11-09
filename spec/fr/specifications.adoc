@@ -1,0 +1,55 @@
+= Failles dans les spécifications
+include::_fpsot-terms.adoc[]
+
+Une {term-vulnerability} peut se trouver dans le code, mais aussi dans l’une des spécifications de la {abbr-fpsot-first}.
+Ces règles fixent comment une personne signale une telle faille, et comment l’équipe de sécurité la corrige et la publie.
+
+Une faille de sécurité dans une spécification est l’un de ces cas :
+
+* une règle dont la mise en œuvre correcte crée une {term-vulnerability};
+* une règle absente, dont l’absence expose toute mise en œuvre conforme;
+* un exemple ou un gabarit qu’il est dangereux de copier.
+
+[[SEC-070]]
+*SEC-070.* Une personne DOIT signaler une faille de sécurité dans une spécification par les canaux privés de SEC-040.
+Le groupe de travail de la spécification NE DOIT PAS recevoir ni discuter la faille avant sa publication.
+Ses billets, ses demandes de fusion, ses réunions et ses listes de diffusion font partie de ses activités.
+La section 5 du link:https://github.com/CommunitySpecification/Community_Specification/blob/8a05e46d768ac0525af882b619c42f3380a9e869/05-governance.md[fichier de gouvernance de la Community Specification 1.0] dit qu’elles ne sont pas confidentielles.
+
+[[SEC-071]]
+*SEC-071.* L’équipe de sécurité DOIT préparer la correction hors des dépôts du groupe de travail, comme dans une bifurcation privée.
+Elle PEUT demander l’aide d’un ou d’une responsable de la spécification, à ces conditions :
+
+* cette personne signe l’engagement de SEC-042, et le registre de SEC-048 la nomme;
+* elle agit à titre personnel, et non pour le groupe de travail ni pour un employeur;
+* elle ne compte pas parmi les trois membres de SEC-042;
+* elle n’emploie pas l’information pour un employeur avant le préavis.
+
+La correction arrive ensuite au groupe de travail comme contribution, au moment de sa publication.
+Une correction rédigée en public montrerait la faille avant que les personnes qui mettent en œuvre puissent agir.
+
+[[SEC-072]]
+*SEC-072.* La correction DOIT sortir en version corrective de chaque version prise en charge, même si elle change une règle.
+Le journal des modifications DOIT l’inscrire sous un titre `Security`, et DOIT nommer chaque règle modifiée.
+Une version corrective atteint vite les équipes de mise en œuvre, et le journal leur montre quoi changer.
+
+[[SEC-073]]
+*SEC-073.* Une faille de sécurité dans une spécification DOIT suivre le préavis et les dates de SEC-050 à SEC-059.
+L’avis de sécurité DOIT nommer la spécification, ses versions touchées et les règles en cause.
+L’équipe PEUT qualifier sa gravité de faible, moyenne, élevée ou critique, ou coter une mise en œuvre conforme selon SEC-044.
+L’équipe de sécurité DEVRAIT demander un identifiant {abbr-cve-first} quand une mise en œuvre conforme est vulnérable.
+Les équipes de mise en œuvre reçoivent alors la même avance et le même avis public que pour le code.
+
+== Références
+
+=== Références normatives
+
+* link:https://github.com/CommunitySpecification/Community_Specification/blob/8a05e46d768ac0525af882b619c42f3380a9e869/05-governance.md[Community Specification 1.0, GOVERNANCE.md], Community Specification, 1.0, commit 8a05e46d768ac0525af882b619c42f3380a9e869. link:https://github.com/CommunitySpecification/Community_Specification/blob/8a05e46d768ac0525af882b619c42f3380a9e869/05-governance.md[Copie fixée à un archivage]
+
+== Historique du document
+
+[cols="1,1,4",options="header"]
+|===
+|Version |Date |Changement
+|0.1.0 |2026-11-08 |Première version.
+|===

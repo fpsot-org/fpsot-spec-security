@@ -1,8 +1,42 @@
 = Spécification FPSOT sur la sécurité
 include::_fpsot-terms.adoc[]
 
-Remplacez cette page par le texte normatif de la spécification.
-Commencez par la portée, puis les classes de conformité, puis les exigences.
+Cette spécification fixe comment les projets de la {abbr-fpsot-first} construisent, publient et maintiennent leurs logiciels et spécifications de façon sécuritaire.
+Elle fixe aussi comment une personne signale une {term-vulnerability}, et comment {abbr-fpsot} la corrige et la divulgue.
+
+Les règles nomment des capacités, pas des produits.
+Elles n’exigent aucun outil de fournisseur ni aucun service payant.
+Les outils n’y figurent qu’à titre d’exemples.
+
+Les règles comportent neuf parties, suivies d’une page informative.
+
+* Le xref:development.adoc[développement sécuritaire] présente un profil d’un cadre du {abbr-nist-first}.
+Il fixe aussi le modèle de menaces et les exigences de sécurité de chaque produit.
+* Le xref:code-review.adoc[code, la revue et l’analyse] : la deuxième revue des changements sensibles, et l’analyse de chaque demande de fusion.
+* Les xref:secrets.adoc[secrets] : les garder hors des dépôts et des images, et leur rotation.
+* La xref:supply-chain.adoc[chaîne d’approvisionnement] : l’épinglage des dépendances et des actions, la nomenclature, la provenance et la signature de chaque version.
+* Le xref:reporting.adoc[signalement et le traitement des vulnérabilités] : le canal privé, les délais, la gravité, les identifiants et les avis.
+* Le xref:disclosure.adoc[préavis et la divulgation] : la liste des organisations qui apprennent une correction en premier.
+Cette partie fixe aussi l’avance et la publication.
+* Les xref:releases.adoc[versions prises en charge et les fichiers de sécurité] : le soutien des versions, sa fin et le fichier `SECURITY.md`.
+* Les xref:specifications.adoc[failles dans les spécifications] : comment les signaler et les corriger.
+* Les xref:security-tests.adoc[tests de sécurité] : leur lien avec la spécification sur les tests.
+* Les xref:legal-context.adoc[lois et délais des destinataires] : une page informative qui résume les lois liées à ces règles.
+
+== Spécifications liées
+
+Cette spécification s’appuie sur d’autres spécifications de {abbr-fpsot}.
+La spécification sur la gestion des versions fixe les archivages et les étiquettes signés, et les branches protégées.
+La spécification sur la documentation fixe les diagrammes sous forme de code qu’emploie un modèle de menaces.
+La spécification sur la conception d’{abbr-api-first} fixe les règles de sécurité que vérifient les tests de sécurité.
+La spécification sur les tests fixe les niveaux de test et les vérifications obligatoires qui exécutent les tests de sécurité.
+
+Les futures spécifications sur le code et sur les capacités ajouteront les outils et les réglages de chaque langage.
+
+== Gabarit
+
+Le fichier `examples/SECURITY.md` est un gabarit qu’un dépôt copie.
+Il contient la politique en français et en anglais, et il respecte SEC-063.
 
 == Conformité
 
@@ -11,35 +45,84 @@ ____
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 (link:https://www.rfc-editor.org/info/rfc2119[RFC 2119], link:https://www.rfc-editor.org/info/rfc8174[RFC 8174]) when, and only when, they appear in all capitals, as shown here.
 ____
 
-Les mots clés suivent l'exigence WRT-010 de la spécification de rédaction de la {abbr-fpsot-first}.
-La version française emploie les mots clés français de l'exigence WRT-011.
 
-== Exigences
+Les mots clés suivent l’exigence WRT-010 de la spécification de rédaction de {abbr-fpsot}.
+La version française emploie les mots clés français de l’exigence WRT-011.
 
-Donnez à chaque exigence une ancre avec son identifiant, juste au-dessus de son paragraphe.
-L'ancre ressemble à `+[[XYZ-001]]+`.
-L'exemple ci-dessous montre la forme. Remplacez-le par la première exigence.
+Les règles visent trois parties.
+Un projet est conforme quand ses dépôts, ses constructions et ses versions respectent chaque règle DOIT qui les vise.
+L’équipe de sécurité de {abbr-fpsot} est conforme quand elle traite chaque signalement selon SEC-040 à SEC-073.
+Un membre de la liste de préavis accepte SEC-057 à SEC-059 comme conditions de son adhésion.
 
-[[TPL-001]]
-*TPL-001.* Un énoncé normatif DOIT employer un des mots clés du {abbr-bcp-first} 14, en majuscules.
-Le mot clé donne sa force à la règle.
+== Règles applicables
+
+Chaque règle ne s’applique pas à chaque dépôt.
+Le tableau montre où s’applique chaque groupe de règles.
+Le dépôt d’un composant logiciel contient du code que {abbr-fpsot} publie sous forme d’artefact, comme une image.
+Un dépôt de spécification contient une spécification, que {abbr-fpsot} publie sous forme de livres en {abbr-html-first} et en {abbr-pdf-first}.
+
+[cols="2,2,2,1",options="header"]
+|===
+|Règles |Dépôt d’un composant logiciel |Dépôt de spécification |Site Web
+|SEC-001, SEC-002 |Oui |Oui |Non
+|SEC-003 à SEC-006 |Oui, pour chaque produit |Non |Non
+|SEC-010 à SEC-017 |Oui |Oui, pour le code et les flux de travail qu’il contient |Non
+|SEC-020 à SEC-024 |Oui |Oui |Oui
+|SEC-030 à SEC-032 |Oui |Oui |Oui
+|SEC-033, SEC-034 |Oui, pour chaque artefact |Non |Non
+|SEC-035, SEC-036 |Oui, pour chaque artefact |DEVRAIT, pour les livres |Non
+|SEC-037 |DEVRAIT |DEVRAIT |Non
+|SEC-040 à SEC-059 |Oui |Oui, avec SEC-070 à SEC-073 |Oui
+|SEC-060 à SEC-064 |Oui |Oui |Non
+|SEC-065 |Non |Non |DEVRAIT
+|SEC-070 à SEC-073 |Non |Oui |Non
+|SEC-080 à SEC-084 |Oui |SEC-080 et SEC-084 seulement |Non
+|===
+
+L’organisation {abbr-fpsot} elle-même respecte SEC-050 à SEC-052, SEC-063 et SEC-064 seulement quand son propre fichier `SECURITY.md` existe.
+Les pages des critères et de la liste des membres doivent exister aussi.
+
+== Statut juridique
+
+La spécification énonce la pratique de {abbr-fpsot}, et ne constitue pas un avis juridique.
+Les points qui exigent l’avis d’un ou d’une juriste figurent dans des notes informatives, jamais dans une règle.
+
+== Normes
+
+Les règles résument les normes externes dans leurs propres mots et n’en reprennent aucun texte.
+Elles citent ces versions :
+
+* le link:https://csrc.nist.gov/pubs/sp/800/218/final[NIST SP 800-218] version 1.1, car la version 1.2 n’est encore qu’une ébauche;
+* l’link:https://asvs.owasp.org/[OWASP ASVS 5.0.0];
+* le link:https://www.first.org/cvss/v4.0/specification-document[CVSS v4.0];
+* link:https://slsa.dev/spec/v1.2/[SLSA v1.2];
+* link:https://cyclonedx.org/specification/overview/[CycloneDX 1.7], avec link:https://spdx.github.io/spdx-spec/v3.0.1/[SPDX 3.0.1] en option.
+
+Cette spécification cite deux normes sur la divulgation par leur titre seulement, car leur texte n’est pas en libre accès.
+Ce sont l’link:https://www.iso.org/standard/72311.html[ISO/IEC 29147:2018, Vulnerability disclosure] et l’link:https://www.iso.org/standard/69725.html[ISO/IEC 30111:2019, Vulnerability handling processes].
 
 == Références
-
-Donnez ici chaque source externe que cite cette page, avec la même adresse que son lien dans le texte.
-Chaque entrée donne le titre, l'éditeur, la version, la date et une copie archivée.
 
 === Références normatives
 
 * link:https://www.rfc-editor.org/info/rfc2119[RFC 2119, Key words for use in RFCs to Indicate Requirement Levels], IETF, BCP 14, 1997-03. link:https://web.archive.org/web/20261103005705/https://www.rfc-editor.org/info/rfc2119/[Copie archivée]
 * link:https://www.rfc-editor.org/info/rfc8174[RFC 8174, Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words], IETF, BCP 14, 2017-05. link:https://web.archive.org/web/20261103005743/https://www.rfc-editor.org/info/rfc8174/[Copie archivée]
+* link:https://csrc.nist.gov/pubs/sp/800/218/final[NIST SP 800-218, Secure Software Development Framework (SSDF) Version 1.1: Recommendations for Mitigating the Risk of Software Vulnerabilities], NIST, version 1.1, 2022-02. link:https://web.archive.org/web/20261106220457/https://csrc.nist.gov/pubs/sp/800/218/final[Copie archivée]
+* link:https://asvs.owasp.org/[OWASP Application Security Verification Standard], OWASP Foundation, 5.0.0, 2025-05-30. link:https://web.archive.org/web/20261101232652/https://asvs.owasp.org/[Copie archivée]
+* link:https://www.first.org/cvss/v4.0/specification-document[Common Vulnerability Scoring System v4.0: Specification Document], FIRST, 4.0, document version 1.2, 2024-06-18. link:https://web.archive.org/web/20261026064457/https://www.first.org/cvss/v4.0/specification-document[Copie archivée]
+* link:https://slsa.dev/spec/v1.2/[Supply-chain Levels for Software Artifacts (SLSA)], Open Source Security Foundation, v1.2, 2025-11-24. link:https://web.archive.org/web/20261101232923/https://slsa.dev/spec/v1.2/[Copie archivée]
+* link:https://cyclonedx.org/specification/overview/[CycloneDX Specification], OWASP Foundation and Ecma International, 1.7, 2025-10-21. link:https://web.archive.org/web/20261028152500/https://cyclonedx.org/specification/overview/[Copie archivée]
+
+=== Références informatives
+
+* link:https://spdx.github.io/spdx-spec/v3.0.1/[The System Package Data Exchange (SPDX) Specification], The Linux Foundation, 3.0.1, 2024-12-17. link:https://web.archive.org/web/20260816180048/https://spdx.github.io/spdx-spec/v3.0.1/[Copie archivée]
+* link:https://www.iso.org/standard/72311.html[ISO/IEC 29147:2018, Information technology, Security techniques, Vulnerability disclosure], ISO and IEC, edition 2, 2018-10. link:https://web.archive.org/web/20261028011301/https://www.iso.org/standard/72311.html[Copie archivée]
+* link:https://www.iso.org/standard/69725.html[ISO/IEC 30111:2019, Information technology, Security techniques, Vulnerability handling processes], ISO and IEC, edition 2, 2019-10. link:https://web.archive.org/web/20261022054235/https://www.iso.org/standard/69725.html[Copie archivée]
 
 == Historique du document
-
-Ajoutez une ligne pour chaque version qui modifie cette page.
 
 [cols="1,1,4",options="header"]
 |===
 |Version |Date |Changement
-|0.1.0 |2026-11-03 |Première version.
+|0.1.0 |2026-11-08 |Première version.
 |===

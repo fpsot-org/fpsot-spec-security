@@ -1,33 +1,34 @@
-= FPSOT specification template
+= FPSOT security specification
 
-This repository is the starting point for an FPSOT specification.
-Create a new repository from it, then replace this text.
-
-== Start a specification
-
-. Set `SPEC_PREFIX` in `.github/workflows/ci.yml` to the three-letter prefix of the requirement IDs.
-. Replace the titles in `spec/`, `docs/antora.yml`, `publiccode.yml`, `AGENTS.md`, `NOTICE` and `skill/SKILL.md`.
-. Replace the example requirement TPL-001 and the example row in `jurisdictions/baseline.yaml`.
-. List each spec page in `spec/<lang>/book.adoc`. The glossary stays the last include.
-
-Each page ends with a document history.
-Each guide page sets `:page-type:` to tutorial, how-to, reference or explanation.
-Write abbreviations and defined terms as `{abbr-…}` and `{term-…}` from the term base of `fpsot-spec-writing`.
-Write English in US spelling.
-Each page that cites outside sources ends with a References section, right before its document history.
-Each code block names its language, such as `[source,text]` or `[source,plantuml]`.
-The continuous integration writes `_fpsot-terms.adoc`, the glossaries and the comparison pages. Git ignores them.
+Rules for how FPSOT projects build, release and maintain their software and specifications securely.
+It profiles the NIST Secure Software Development Framework 1.1, sets security requirements from OWASP ASVS 5.0.0, and covers review, analysis, secrets and the supply chain: pinned inputs, a CycloneDX SBOM, SLSA provenance and signed releases.
+It also sets how vulnerabilities are reported in private, scored with CVSS v4.0 and disclosed, with a free pre-notice to public bodies and to the hosting providers and integrators that run FPSOT components for them.
+The rules name capabilities, not tools. Version 0.1 is a draft.
 
 == Implement this spec
 
 Read the normative text in `spec/en/` or `spec/fr/`.
-Each requirement has an ID, such as `XYZ-001`.
-Check your implementation against every requirement.
+Each requirement has an ID from `SEC-001` to `SEC-084`.
+
+* Keep a threat model in each product repository, and record its ASVS level (SEC-003 to SEC-006).
+* Run static analysis, secret scanning and dependency checks as required checks of each pull request (SEC-012 to SEC-014, SEC-080).
+* Pin every dependency and CI action, and publish an SBOM, provenance and signatures with each software release (SEC-030 to SEC-037).
+  The table "Which rules apply" in `spec/en/index.adoc` shows which rules apply to software, specification and website repositories.
+* Copy `examples/SECURITY.md` into each repository, fill in its placeholders, and turn on private vulnerability reporting (SEC-063, SEC-064).
+
+Never report or discuss a vulnerability in a Working Group or a public issue.
+Working Group activity is not confidential under section 5 of the Community Specification 1.0 governance (SEC-040, SEC-070).
 
 == Adopt this spec
 
-Read the guides in `docs/modules/en/pages/` or `docs/modules/fr/pages/`.
-They explain what the spec gives your organization and how to require it.
+Read the guide in `docs/modules/en/pages/index.adoc` or `docs/modules/fr/pages/index.adoc`.
+It walks through one report, from receipt to public release.
+A public body that uses an FPSOT component can join the pre-notice list free of charge, and receives each fix before the public (SEC-050 to SEC-059).
+So can a hosting provider or an integrator that runs the component in production for it.
+FPSOT itself meets SEC-050 to SEC-052, SEC-063 and SEC-064 only once its org-wide `SECURITY.md`, its criteria page and its member list exist.
+A request for proposals can require that a supplier meet this specification, or a given ASVS level (SEC-005).
+The comparison data in `jurisdictions/` shows how the guidance of Canada and Québec differs.
+The page `legal-context.adoc` is informative and is not legal advice.
 
 == Layout
 
@@ -36,10 +37,13 @@ They explain what the spec gives your organization and how to require it.
 | Folder | Content
 
 | `spec/`
-| Normative text, in English and French. `book.adoc` joins the pages into one book.
+| Normative text, in English and French. `book.adoc` joins the pages into one book, published as PDF with each release.
 
 | `docs/`
 | Guides, in the Antora folder layout.
+
+| `examples/`
+| `SECURITY.md`, the bilingual template of a repository's security policy.
 
 | `skill/`
 | The agent skill: a short summary that cites requirement IDs.
@@ -51,7 +55,7 @@ They explain what the spec gives your organization and how to require it.
 | PlantUML sources and their rendered SVG files.
 
 | `jurisdictions/`
-| Comparison data per jurisdiction. `baseline.yaml` lists the compared requirements.
+| Comparison data: how each government handles the same topics.
 |===
 
 == License
