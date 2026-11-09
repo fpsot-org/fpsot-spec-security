@@ -1,6 +1,6 @@
 publiccodeYmlVersion: "0.4"
-name: FPSOT specification template
-url: "https://github.com/fpsot-org/fpsot-spec-template"
+name: FPSOT security specification
+url: "https://github.com/fpsot-org/fpsot-spec-security"
 platforms:
   - web
 categories:
