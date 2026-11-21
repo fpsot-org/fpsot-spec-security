@@ -74,6 +74,7 @@ Des outils comme link:https://www.sigstore.dev/[Sigstore] ou les attestations d�
 La même source, le même environnement et les mêmes étapes donnent alors les mêmes artefacts, bit pour bit.
 Un projet DEVRAIT consigner l’environnement de construction de chaque version, et DEVRAIT indiquer chaque source connue d’écart.
 Chacun peut alors reconstruire une version et la comparer à l’artefact publié.
+La spécification sur le code en fait une obligation pour les archives Java et les binaires Go, selon COD-022.
 
 == Références
 
@@ -94,4 +95,5 @@ Chacun peut alors reconstruire une version et la comparer à l’artefact publi�
 |===
 |Version |Date |Changement
 |0.1.0 |2026-11-08 |Première version.
+|0.1.1 |2026-11-21 |Renvoie à COD-022, qui rend les constructions reproductibles obligatoires pour les archives Java et les binaires Go.
 |===
