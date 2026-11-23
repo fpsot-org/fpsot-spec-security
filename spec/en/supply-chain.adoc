@@ -95,5 +95,5 @@ The code specification makes this a MUST for Java archives and Go binaries, unde
 |===
 |Version |Date |Change
 |0.1.0 |2026-11-08 |First version.
-|0.1.1 |2026-11-21 |Points to COD-022, which makes reproducible builds a MUST for Java archives and Go binaries.
+|0.1.1 |2026-11-22 |Points to COD-022, which makes reproducible builds a MUST for Java archives and Go binaries.
 |===

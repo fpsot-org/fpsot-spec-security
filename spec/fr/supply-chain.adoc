@@ -95,5 +95,5 @@ La spécification sur le code en fait une obligation pour les archives Java et l
 |===
 |Version |Date |Changement
 |0.1.0 |2026-11-08 |Première version.
-|0.1.1 |2026-11-21 |Renvoie à COD-022, qui rend les constructions reproductibles obligatoires pour les archives Java et les binaires Go.
+|0.1.1 |2026-11-22 |Renvoie à COD-022, qui rend les constructions reproductibles obligatoires pour les archives Java et les binaires Go.
 |===

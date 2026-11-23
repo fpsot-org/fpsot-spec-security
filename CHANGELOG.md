@@ -6,7 +6,7 @@ and versions follow [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.h
 
 ## [Unreleased]
 
-## [0.1.1] - 2026-11-21
+## [0.1.1] - 2026-11-22
 
 ### Changed
 
