@@ -6,6 +6,12 @@ and versions follow [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.h
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-11-22
+
+### Changed
+
+- SEC-037 points to COD-022 of the code specification, which makes reproducible builds a MUST for Java archives and Go binaries.
+
 ## [0.1.0] - 2026-11-08
 
 ### Added

@@ -74,6 +74,7 @@ Tools such as link:https://www.sigstore.dev/[Sigstore] or the artifact attestati
 The same source, environment and steps then give the same artifacts, bit for bit, whoever runs the build.
 A project SHOULD record the build environment of each release, and SHOULD state each known source of difference.
 Anyone can then rebuild a release and compare it with the published artifact.
+The code specification makes this a MUST for Java archives and Go binaries, under COD-022.
 
 == References
 
@@ -94,4 +95,5 @@ Anyone can then rebuild a release and compare it with the published artifact.
 |===
 |Version |Date |Change
 |0.1.0 |2026-11-08 |First version.
+|0.1.1 |2026-11-22 |Points to COD-022, which makes reproducible builds a MUST for Java archives and Go binaries.
 |===
